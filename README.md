@@ -10,3 +10,5 @@ Two versions:
 - SlicerStereotaxiaLite.py: converts 2D fiducial and Target coordinates into 3D reference on a CT scan volume.
  
 both run into 3DSlicer platform after instalation as a scripted module.-
+
+
