@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MRML  version="Slicer4.4.0" userTags="">
+<Crosshair
+  id="vtkMRMLCrosshairNodedefault" name="Crosshair" hideFromEditors="true" selectable="true" selected="false" singletonTag="default" crosshairMode="NoCrosshair" crosshairBehavior="OffsetJumpSlice" crosshairThickness="Fine" crosshairRAS="0 0 0"></Crosshair>
+ <Selection
+  id="vtkMRMLSelectionNodeSingleton" name="Selection" hideFromEditors="true" selectable="true" selected="false" singletonTag="Singleton" references="unit/:vtkMRMLUnitNodeApplicationTime vtkMRMLUnitNodeApplicationTime;unit/area:vtkMRMLUnitNodeApplicationArea;unit/frequency:vtkMRMLUnitNodeApplicationFrequency;unit/intensity:vtkMRMLUnitNodeApplicationIntensity;unit/length:vtkMRMLUnitNodeApplicationLength;unit/time:vtkMRMLUnitNodeApplicationTime vtkMRMLUnitNodeApplicationTime;unit/velocity:vtkMRMLUnitNodeApplicationVelocity;unit/volume:vtkMRMLUnitNodeApplicationVolume;" activePlaceNodeClassName="vtkMRMLMarkupsFiducialNode" ></Selection>
+ <Interaction
+  id="vtkMRMLInteractionNodeSingleton" name="Interaction" hideFromEditors="true" selectable="true" selected="false" singletonTag="Singleton" currentInteractionMode="ViewTransform" placeModePersistence="false" lastInteractionMode="ViewTransform" ></Interaction>
+ <View
+  id="vtkMRMLViewNode1" name="View1" hideFromEditors="false" selectable="true" selected="false" singletonTag="1" attributes="MappedInLayout:1" layoutLabel="1" layoutName="1" active="false" visibility="true" backgroundColor="0.756863 0.764706 0.909804" backgroundColor2="0.454902 0.470588 0.745098" layoutColor="0.454902 0.513725 0.913725" orientationMarkerType="none" orientationMarkerSize="medium" rulerType="none" rulerColor="white" AxisLabels="L;R;P;A;I;S" fieldOfView="200" letterSize="0.05" boxVisible="true" fiducialsVisible="true" fiducialLabelsVisible="true" axisLabelsVisible="true" axisLabelsCameraDependent="true" animationMode="Off" viewAxisMode="LookFrom" spinDegrees="2" spinMs="5" spinDirection="YawLeft" rotateDegrees="5" rockLength="200" rockCount="0" stereoType="NoStereo" renderMode="Perspective" useDepthPeeling="0" gpuMemorySize="0" autoReleaseGraphicsResources="false" expectedFPS="8" volumeRenderingQuality="Adaptive" raycastTechnique="Composite" volumeRenderingSurfaceSmoothing="0" volumeRenderingOversamplingFactor="2" linkedControl="0" ></View>
+ <Slice
+  id="vtkMRMLSliceNodeRed" name="Red" hideFromEditors="false" selectable="true" selected="false" singletonTag="Red" attributes="MappedInLayout:0" layoutLabel="" layoutName="Red" active="false" visibility="true" backgroundColor="0 0 0" backgroundColor2="0 0 0" layoutColor="0.54902 0.54902 0.54902" orientationMarkerType="none" orientationMarkerSize="medium" rulerType="none" rulerColor="white" AxisLabels="L;R;P;A;I;S" fieldOfView="445.607 495.808 1" dimensions="790 879 1" xyzOrigin="0 0 0" sliceResolutionMode="1" uvwExtents="445.607 495.808 1" uvwDimensions="256 256 1" uvwOrigin="0 0 0" activeSlice="0" layoutGridRows="1" layoutGridColumns="1" sliceToRAS="-1 0 0 32.8559 0 1 0 10.4349 0 0 1 102.786 0 0 0 1" orientationMatrixAxial="-1 0 0 0 1 0 0 0 1" orientationMatrixSagittal="0 0 1 -1 0 0 0 1 0" orientationMatrixCoronal="-1 0 0 0 0 1 0 1 0" orientation="Axial" defaultOrientation="" orientationReference="Axial" jumpMode="1" sliceVisibility="false" widgetVisibility="false" widgetOutlineVisibility="true" useLabelOutline="false" sliceSpacingMode="0" prescribedSliceSpacing="1 1 1" ></Slice>
+ <Slice
+  id="vtkMRMLSliceNodeGreen" name="Green" hideFromEditors="false" selectable="true" selected="false" singletonTag="Green" attributes="MappedInLayout:0" layoutLabel="" layoutName="Green" active="false" visibility="true" backgroundColor="0 0 0" backgroundColor2="0 0 0" layoutColor="0.54902 0.54902 0.54902" orientationMarkerType="none" orientationMarkerSize="medium" rulerType="none" rulerColor="white" AxisLabels="L;R;P;A;I;S" fieldOfView="673.229 486.535 0.683594" dimensions="595 430 1" xyzOrigin="0 0 0" sliceResolutionMode="1" uvwExtents="673.229 486.535 0.683594" uvwDimensions="256 256 1" uvwOrigin="0 0 0" activeSlice="0" layoutGridRows="1" layoutGridColumns="1" sliceToRAS="-1 0 0 32.8559 0 0 1 10.4349 0 1 0 102.786 0 0 0 1" orientationMatrixAxial="-1 0 0 0 1 0 0 0 1" orientationMatrixSagittal="0 0 1 -1 0 0 0 1 0" orientationMatrixCoronal="-1 0 0 0 0 1 0 1 0" orientation="Coronal" defaultOrientation="" orientationReference="Coronal" jumpMode="1" sliceVisibility="false" widgetVisibility="false" widgetOutlineVisibility="true" useLabelOutline="false" sliceSpacingMode="0" prescribedSliceSpacing="1 1 1" ></Slice>
+ <Slice
+  id="vtkMRMLSliceNodeYellow" name="Yellow" hideFromEditors="false" selectable="true" selected="false" singletonTag="Yellow" attributes="MappedInLayout:0" layoutLabel="" layoutName="Yellow" active="false" visibility="true" backgroundColor="0 0 0" backgroundColor2="0 0 0" layoutColor="0.54902 0.54902 0.54902" orientationMarkerType="none" orientationMarkerSize="medium" rulerType="none" rulerColor="white" AxisLabels="L;R;P;A;I;S" fieldOfView="452.226 327.369 0.683594" dimensions="594 430 1" xyzOrigin="0 0 0" sliceResolutionMode="1" uvwExtents="452.226 327.369 0.683594" uvwDimensions="256 256 1" uvwOrigin="0 0 0" activeSlice="0" layoutGridRows="1" layoutGridColumns="1" sliceToRAS="0 0 1 32.8559 -1 0 0 10.4349 0 1 0 102.786 0 0 0 1" orientationMatrixAxial="-1 0 0 0 1 0 0 0 1" orientationMatrixSagittal="0 0 1 -1 0 0 0 1 0" orientationMatrixCoronal="-1 0 0 0 0 1 0 1 0" orientation="Sagittal" defaultOrientation="" orientationReference="Sagittal" jumpMode="1" sliceVisibility="false" widgetVisibility="false" widgetOutlineVisibility="true" useLabelOutline="false" sliceSpacingMode="0" prescribedSliceSpacing="1 1 1" ></Slice>
+ <Layout
+  id="vtkMRMLLayoutNodevtkMRMLLayoutNode" name="Layout" hideFromEditors="true" selectable="true" selected="false" singletonTag="vtkMRMLLayoutNode" currentViewArrangement="4" guiPanelVisibility="1" bottomPanelVisibility ="1" guiPanelLR="0" collapseSliceControllers="0"
+ numberOfCompareViewRows="1" numberOfCompareViewColumns="1" numberOfLightboxRows="6" numberOfLightboxColumns="6" mainPanelSize="400" secondaryPanelSize="400" ></Layout>
+ <SliceComposite
+  id="vtkMRMLSliceCompositeNodeRed" name="SliceComposite" hideFromEditors="true" selectable="true" selected="false" singletonTag="Red" compositing="0" foregroundOpacity="0" labelOpacity="1" linkedControl="0" hotLinkedControl="0" fiducialVisibility="1" fiducialLabelVisibility="1" sliceIntersectionVisibility="0" layoutName="Red" annotationSpace="IJKAndRAS" annotationMode="All" doPropagateVolumeSelection="1" ></SliceComposite>
+ <SliceComposite
+  id="vtkMRMLSliceCompositeNodeGreen" name="SliceComposite_2" hideFromEditors="true" selectable="true" selected="false" singletonTag="Green" compositing="0" foregroundOpacity="0" labelOpacity="1" linkedControl="0" hotLinkedControl="0" fiducialVisibility="1" fiducialLabelVisibility="1" sliceIntersectionVisibility="0" layoutName="Green" annotationSpace="IJKAndRAS" annotationMode="All" doPropagateVolumeSelection="1" ></SliceComposite>
+ <SliceComposite
+  id="vtkMRMLSliceCompositeNodeYellow" name="SliceComposite_1" hideFromEditors="true" selectable="true" selected="false" singletonTag="Yellow" compositing="0" foregroundOpacity="0" labelOpacity="1" linkedControl="0" hotLinkedControl="0" fiducialVisibility="1" fiducialLabelVisibility="1" sliceIntersectionVisibility="0" layoutName="Yellow" annotationSpace="IJKAndRAS" annotationMode="All" doPropagateVolumeSelection="1" ></SliceComposite>
+ <Camera
+  id="vtkMRMLCameraNode1" name="Camera" hideFromEditors="false" selectable="true" selected="false" singletonTag="1" userTags="" position="790.87 747.777 325.475" focalPoint="0 0 0" viewUp="-0.221866 -0.182276 0.957889" parallelProjection="false" parallelScale="1" viewAngle="30" appliedTransform="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" ></Camera>
+ <ClipModels
+  id="vtkMRMLClipModelsNodevtkMRMLClipModelsNode" name="ClipModels" hideFromEditors="true" selectable="true" selected="false" singletonTag="vtkMRMLClipModelsNode" clipType="0" redSliceClipState="0" yellowSliceClipState="0" greenSliceClipState="0" ></ClipModels>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNodeDataProbe" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" singletonTag="DataProbe" ></ScriptedModule>
+ <ChartView
+  id="vtkMRMLChartViewNodeChartView1" name="ChartView1" hideFromEditors="false" selectable="true" selected="false" singletonTag="ChartView1" attributes="MappedInLayout:0" layoutLabel="1" layoutName="ChartView1" active="false" visibility="true" backgroundColor="0 0 0" backgroundColor2="0 0 0" layoutColor="0.454902 0.513725 0.913725" rulerColor="white" AxisLabels="L;R;P;A;I;S" ></ChartView>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNodeMi_9" name="Mi_9" hideFromEditors="true" selectable="true" selected="false" singletonTag="Mi_9" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNodeFiducialsToModelDistance" name="FiducialsToModelDistance" hideFromEditors="true" selectable="true" selected="false" singletonTag="FiducialsToModelDistance" references="InputReference:vtkMRMLModelNode4;" ></ScriptedModule>
+ <TableView
+  id="vtkMRMLTableViewNodeTableView1" name="TableView1" hideFromEditors="false" selectable="true" selected="false" singletonTag="TableView1" layoutLabel="T" layoutName="TableView1" active="false" visibility="true" backgroundColor="0 0 0" backgroundColor2="0 0 0" layoutColor="0.454902 0.513725 0.913725" rulerColor="white" AxisLabels="L;R;P;A;I;S" doPropagateTableSelection="1" ></TableView>
+ <SegmentEditor
+  id="vtkMRMLSegmentEditorNodeSegmentEditor" name="SegmentEditor" hideFromEditors="true" selectable="true" selected="false" singletonTag="SegmentEditor" attributes="BrushAbsoluteDiameter:5;BrushDiameterIsRelative:1;BrushMaximumAbsoluteDiameter:100;BrushMinimumAbsoluteDiameter:0.01;BrushPixelMode:0;BrushRelativeDiameter:3;BrushSphere:0;EditIn3DViews:0;Erase.ColorSmudge:0;Erase.EraseAllSegments:0;Fill between slices.AutoUpdate:1;Grow from seeds.AutoUpdate:1;Grow from seeds.SeedLocalityFactor:0;Hollow.ShellMode:INSIDE_SURFACE;Hollow.ShellThicknessMm:3;Islands.MinimumSize:1000;Islands.Operation:KEEP_LARGEST_ISLAND;Logical operators.BypassMasking:1;Logical operators.Operation:COPY;Margin.MarginSizeMm:3;Paint.ColorSmudge:0;Paint.EraseAllSegments:0;Scissors.Operation:EraseInside;Scissors.Shape:FreeForm;Scissors.SliceCutDepthMm:0;Scissors.SliceCutMode:Unlimited;Smoothing.ColorSmudge:0;Smoothing.EraseAllSegments:0;Smoothing.GaussianStandardDeviationMm:3;Smoothing.JointTaubinSmoothingFactor:0.5;Smoothing.KernelSizeMm:3;Smoothing.SmoothingMethod:MEDIAN;Threshold.AutoThresholdMethod:OTSU;Threshold.AutoThresholdMode:SET_LOWER_MAX;Threshold.BrushType:CIRCLE;Threshold.HistogramSetLower:LOWER;Threshold.HistogramSetUpper:UPPER;Threshold.MaximumThreshold:0;Threshold.MinimumThreshold:0" selectedSegmentID="" activeEffectName="" maskMode="PaintAllowedEverywhere" maskSegmentID="" masterVolumeIntensityMask="false" masterVolumeIntensityMaskRange="0 0" overwriteMode="OverwriteAllSegments" ></SegmentEditor>
+ <VolumeProperty
+  id="vtkMRMLVolumePropertyNode4" name="CT-AAA" hideFromEditors="false" selectable="true" selected="false" userTags="" interpolation="0" shade="0" diffuse="0.7" ambient="0.1" specular="0.2" specularPower="10" scalarOpacity="4 0 1 1024 1" gradientOpacity="4 0 1 255 1" colorTransfer="8 0 0 0 0 1024 1 1 1" effectiveRange="0 -1" ></VolumeProperty>
+ <VolumeProperty
+  id="vtkMRMLVolumePropertyNode4" name="CT-AAA" hideFromEditors="false" selectable="true" selected="false" userTags="" interpolation="0" shade="0" diffuse="0.7" ambient="0.1" specular="0.2" specularPower="10" scalarOpacity="4 0 1 1024 1" gradientOpacity="4 0 1 255 1" colorTransfer="8 0 0 0 0 1024 1 1 1" effectiveRange="0 -1" ></VolumeProperty>
+ <VolumeProperty
+  id="vtkMRMLVolumePropertyNode4" name="CT-AAA" hideFromEditors="false" selectable="true" selected="false" userTags="" interpolation="0" shade="0" diffuse="0.7" ambient="0.1" specular="0.2" specularPower="10" scalarOpacity="4 0 1 1024 1" gradientOpacity="4 0 1 255 1" colorTransfer="8 0 0 0 0 1024 1 1 1" effectiveRange="0 -1" ></VolumeProperty>
+ <VolumeProperty
+  id="vtkMRMLVolumePropertyNode5" name="CT-Muscle" hideFromEditors="false" selectable="true" selected="false" userTags="" interpolation="0" shade="0" diffuse="0.7" ambient="0.1" specular="0.2" specularPower="10" scalarOpacity="4 0 1 1024 1" gradientOpacity="4 0 1 255 1" colorTransfer="8 0 0 0 0 1024 1 1 1" effectiveRange="0 -1" ></VolumeProperty>
+ <SubjectHierarchy
+  id="vtkMRMLSubjectHierarchyNode1" name="SubjectHierarchy" hideFromEditors="false" selectable="true" selected="false" attributes="SubjectHierarchyVersion:2" >
+   <SubjectHierarchyItem id="96" name="Scene" parent="0" type="" expanded="true" attributes="Level^Scene|">
+     <SubjectHierarchyItem id="104" dataNode="vtkMRMLModelNode4" parent="96" type="Models" expanded="true"></SubjectHierarchyItem>
+     <SubjectHierarchyItem id="105" dataNode="vtkMRMLModelNode6" parent="96" type="Models" expanded="true"></SubjectHierarchyItem>
+     <SubjectHierarchyItem id="106" dataNode="vtkMRMLModelNode8" parent="96" type="Models" expanded="true"></SubjectHierarchyItem>
+     <SubjectHierarchyItem id="107" dataNode="vtkMRMLModelNode9" parent="96" type="Models" expanded="true"></SubjectHierarchyItem>
+     <SubjectHierarchyItem id="108" dataNode="vtkMRMLLinearTransformNode4" parent="96" type="Transforms" expanded="true"></SubjectHierarchyItem>
+     <SubjectHierarchyItem id="110" dataNode="vtkMRMLLinearTransformNode7" parent="96" type="Transforms" expanded="true"></SubjectHierarchyItem>
+     <SubjectHierarchyItem id="111" dataNode="vtkMRMLLinearTransformNode8" parent="96" type="Transforms" expanded="true"></SubjectHierarchyItem>
+     <SubjectHierarchyItem id="112" dataNode="vtkMRMLModelNode10" parent="96" type="Models" expanded="true"></SubjectHierarchyItem>
+     <SubjectHierarchyItem id="113" dataNode="vtkMRMLSceneViewNode1" parent="96" type="SceneViews" expanded="true"></SubjectHierarchyItem>
+     <SubjectHierarchyItem id="114" dataNode="vtkMRMLLinearTransformNode9" parent="96" type="Transforms" expanded="true"></SubjectHierarchyItem>
+     <SubjectHierarchyItem id="115" dataNode="vtkMRMLLinearTransformNode6" parent="96" type="Transforms" expanded="true"></SubjectHierarchyItem>
+     <SubjectHierarchyItem id="117" dataNode="vtkMRMLLinearTransformNode5" parent="96" type="Transforms" expanded="true"></SubjectHierarchyItem></SubjectHierarchyItem></SubjectHierarchy>
+ <VolumeProperty
+  id="vtkMRMLVolumePropertyNode4" name="CT-AAA" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLVolumePropertyStorageNode2;" userTags="" interpolation="0" shade="0" diffuse="0.7" ambient="0.1" specular="0.2" specularPower="10" scalarOpacity="4 0 1 1024 1" gradientOpacity="4 0 1 255 1" colorTransfer="8 0 0 0 0 1024 1 1 1" effectiveRange="0 -1" ></VolumeProperty>
+ <VolumeProperty
+  id="vtkMRMLVolumePropertyNode6" name="CT-AAA" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLVolumePropertyStorageNode3;" userTags="" interpolation="0" shade="0" diffuse="0.7" ambient="0.1" specular="0.2" specularPower="10" scalarOpacity="4 0 1 1024 1" gradientOpacity="4 0 1 255 1" colorTransfer="8 0 0 0 0 1024 1 1 1" effectiveRange="0 -1" ></VolumeProperty>
+ <VolumeProperty
+  id="vtkMRMLVolumePropertyNode7" name="CT-AAA" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLVolumePropertyStorageNode4;" userTags="" interpolation="0" shade="0" diffuse="0.7" ambient="0.1" specular="0.2" specularPower="10" scalarOpacity="4 0 1 1024 1" gradientOpacity="4 0 1 255 1" colorTransfer="8 0 0 0 0 1024 1 1 1" effectiveRange="0 -1" ></VolumeProperty>
+ <VolumeProperty
+  id="vtkMRMLVolumePropertyNode5" name="CT-Muscle" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLVolumePropertyStorageNode5;" userTags="" interpolation="0" shade="0" diffuse="0.7" ambient="0.1" specular="0.2" specularPower="10" scalarOpacity="4 0 1 1024 1" gradientOpacity="4 0 1 255 1" colorTransfer="8 0 0 0 0 1024 1 1 1" effectiveRange="0 -1" ></VolumeProperty>
+ <Camera
+  id="vtkMRMLCameraNode7" name="Default Scene Camera" hideFromEditors="false" selectable="true" selected="false" userTags="" position="565.218 1460.75 253.835" focalPoint="27.4409 -14.9249 102.216" viewUp="0.0101242 -0.105853 0.99433" parallelProjection="false" parallelScale="408.782" viewAngle="30" appliedTransform="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" ></Camera>
+ <Camera
+  id="vtkMRMLCameraNode6" name="Default Scene Camera" hideFromEditors="false" selectable="true" selected="false" userTags="" position="349.456 886.352 191.49" focalPoint="32.8559 10.4349 102.786" viewUp="0.0106018 -0.104542 0.994464" parallelProjection="false" parallelScale="1" viewAngle="30" appliedTransform="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" ></Camera>
+ <Camera
+  id="vtkMRMLCameraNode5" name="Default Scene Camera" hideFromEditors="false" selectable="true" selected="false" userTags="" position="349.456 886.352 191.49" focalPoint="32.8559 10.4349 102.786" viewUp="0.0106018 -0.104542 0.994464" parallelProjection="false" parallelScale="1" viewAngle="30" appliedTransform="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" ></Camera>
+ <Camera
+  id="vtkMRMLCameraNode4" name="Default Scene Camera" hideFromEditors="false" selectable="true" selected="false" userTags="" position="349.456 886.352 191.49" focalPoint="32.8559 10.4349 102.786" viewUp="0.0106018 -0.104542 0.994464" parallelProjection="false" parallelScale="1" viewAngle="30" appliedTransform="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" ></Camera>
+ <Camera
+  id="vtkMRMLCameraNode3" name="Default Scene Camera" hideFromEditors="false" selectable="true" selected="false" userTags="" position="349.456 886.352 191.49" focalPoint="32.8559 10.4349 102.786" viewUp="0.0106018 -0.104542 0.994464" parallelProjection="false" parallelScale="1" viewAngle="30" appliedTransform="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" ></Camera>
+ <Camera
+  id="vtkMRMLCameraNode2" name="Mi camara" hideFromEditors="false" selectable="true" selected="false" userTags="" position="630.7 856.393 501.158" focalPoint="32.8559 10.4349 102.786" viewUp="-0.0221447 -0.413081 0.910425" parallelProjection="false" parallelScale="1" viewAngle="30" appliedTransform="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" ></Camera>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode18" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode17" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode16" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode15" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode14" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode13" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode12" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode11" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode10" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode9" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode8" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode7" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ModuleName ="DataProbe" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode6" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode5" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode4" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode3" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode2" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode1" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <ModelStorage
+  id="vtkMRMLModelStorageNode1" name="ModelStorage" hideFromEditors="true" selectable="true" selected="false" fileName="Arco.vtk" useCompression="1" defaultWriteFileExtension="vtk" readState="0" writeState="4" coordinateSystem="RAS" ></ModelStorage>
+ <ModelDisplay
+  id="vtkMRMLModelDisplayNode4" name="ModelDisplay" hideFromEditors="true" selectable="true" selected="false" color="1 0 0" edgeColor="0 0 0" selectedColor="1 0 0" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 -1" activeScalarName="" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0" ></ModelDisplay>
+ <Model
+  id="vtkMRMLModelNode4" name="Arco" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLModelDisplayNode4;storage:vtkMRMLModelStorageNode1;transform:vtkMRMLLinearTransformNode8;" userTags="" ></Model>
+ <ModelStorage
+  id="vtkMRMLModelStorageNode2" name="ModelStorage_1" hideFromEditors="true" selectable="true" selected="false" fileName="Aguja_de_Puncion.vtk" useCompression="1" defaultWriteFileExtension="vtk" readState="0" writeState="4" coordinateSystem="RAS" ></ModelStorage>
+ <ModelDisplay
+  id="vtkMRMLModelDisplayNode5" name="ModelDisplay_1" hideFromEditors="true" selectable="true" selected="false" color="0 0.333333 1" edgeColor="0 0 0" selectedColor="1 0 0" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 -1" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0" ></ModelDisplay>
+ <Model
+  id="vtkMRMLModelNode6" name="Aguja_de_Puncion" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLModelDisplayNode5;storage:vtkMRMLModelStorageNode2;transform:vtkMRMLLinearTransformNode7;" userTags="" ></Model>
+ <ModelStorage
+  id="vtkMRMLModelStorageNode5" name="ModelStorage_4" hideFromEditors="true" selectable="true" selected="false" fileName="CoordinateModel.vtk" useCompression="1" defaultWriteFileExtension="vtk" readState="0" writeState="4" coordinateSystem="RAS" ></ModelStorage>
+ <ModelDisplay
+  id="vtkMRMLModelDisplayNode8" name="ModelDisplay_4" hideFromEditors="true" selectable="true" selected="false" color="1 0 0" edgeColor="0 0 0" selectedColor="1 0 0" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 -1" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0" ></ModelDisplay>
+ <Model
+  id="vtkMRMLModelNode8" name="CoordinateModel" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLModelDisplayNode8;storage:vtkMRMLModelStorageNode5;" userTags="" ></Model>
+ <ModelStorage
+  id="vtkMRMLModelStorageNode6" name="ModelStorage_5" hideFromEditors="true" selectable="true" selected="false" fileName="Fantasma_Modelo.vtk" useCompression="1" defaultWriteFileExtension="vtk" readState="0" writeState="4" coordinateSystem="RAS" ></ModelStorage>
+ <ModelDisplay
+  id="vtkMRMLModelDisplayNode9" name="ModelDisplay_5" hideFromEditors="true" selectable="true" selected="false" color="1 1 0" edgeColor="0 0 0" selectedColor="1 0 0" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 -1" activeScalarName="" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0" ></ModelDisplay>
+ <Model
+  id="vtkMRMLModelNode9" name="Fantasma_Modelo" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLModelDisplayNode9;storage:vtkMRMLModelStorageNode6;" userTags="" ></Model>
+ <TransformStorage
+  id="vtkMRMLTransformStorageNode1" name="TransformStorage" hideFromEditors="true" selectable="true" selected="false" fileName="Transformada_Isocentro.h5" useCompression="1" defaultWriteFileExtension="h5" readState="0" writeState="4" preferITKv3CompatibleTransforms="false" ></TransformStorage>
+ <LinearTransform
+  id="vtkMRMLLinearTransformNode4" name="Transformada_Isocentro" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLTransformDisplayNode1;storage:vtkMRMLTransformStorageNode1;" userTags="" matrixTransformToParent="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" ></LinearTransform>
+ <TransformStorage
+  id="vtkMRMLTransformStorageNode4" name="TransformStorage_3" hideFromEditors="true" selectable="true" selected="false" fileName="Transformada_angulo_Beta.h5" useCompression="1" defaultWriteFileExtension="h5" readState="0" writeState="4" preferITKv3CompatibleTransforms="false" ></TransformStorage>
+ <LinearTransform
+  id="vtkMRMLLinearTransformNode7" name="Transformada_angulo_Beta" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLTransformStorageNode4;transform:vtkMRMLLinearTransformNode8;" userTags="" matrixTransformToParent="0.71934 0 -0.694658 0  0 1 0 0  0.694658 0 0.71934 0  0 0 0 1" ></LinearTransform>
+ <TransformStorage
+  id="vtkMRMLTransformStorageNode5" name="TransformStorage_4" hideFromEditors="true" selectable="true" selected="false" fileName="Transformada_angulo_Alfa.h5" useCompression="1" defaultWriteFileExtension="h5" readState="0" writeState="4" preferITKv3CompatibleTransforms="false" ></TransformStorage>
+ <LinearTransform
+  id="vtkMRMLLinearTransformNode8" name="Transformada_angulo_Alfa" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLTransformStorageNode5;transform:vtkMRMLLinearTransformNode6;" userTags="" matrixTransformToParent="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" ></LinearTransform>
+ <ModelStorage
+  id="vtkMRMLModelStorageNode7" name="ModelStorage_6" hideFromEditors="true" selectable="true" selected="false" fileName="N_Locators.vtk" useCompression="1" defaultWriteFileExtension="vtk" readState="0" writeState="4" coordinateSystem="RAS" ></ModelStorage>
+ <ModelDisplay
+  id="vtkMRMLModelDisplayNode10" name="ModelDisplay_6" hideFromEditors="true" selectable="true" selected="false" color="1 0 0" edgeColor="0 0 0" selectedColor="1 0 0" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 -1" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0" ></ModelDisplay>
+ <Model
+  id="vtkMRMLModelNode10" name="N_Locators" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLModelDisplayNode10;storage:vtkMRMLModelStorageNode7;" userTags="" ></Model>
+ <SceneView
+  id="vtkMRMLSceneViewNode1" name="Master Scene View" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLSceneViewStorageNode1;" userTags="" screenshotType="4" sceneViewDescription="Scene at MRML file save point" >  <Crosshair
+ id="vtkMRMLCrosshairNodedefault" name="Crosshair" hideFromEditors="true" selectable="true" selected="false" singletonTag="default" crosshairMode="NoCrosshair" crosshairBehavior="OffsetJumpSlice" crosshairThickness="Fine" crosshairRAS="0 0 0"  ></Crosshair>
+  <Selection
+ id="vtkMRMLSelectionNodeSingleton" name="Selection" hideFromEditors="true" selectable="true" selected="false" singletonTag="Singleton" references="ActiveVolume:vtkMRMLScalarVolumeNode1;SecondaryVolume:vtkMRMLScalarVolumeNode1;unit/:vtkMRMLUnitNodeApplicationTime vtkMRMLUnitNodeApplicationTime;unit/frequency:vtkMRMLUnitNodeApplicationFrequency;unit/intensity:vtkMRMLUnitNodeApplicationIntensity;unit/length:vtkMRMLUnitNodeApplicationLength;unit/time:vtkMRMLUnitNodeApplicationTime vtkMRMLUnitNodeApplicationTime;unit/velocity:vtkMRMLUnitNodeApplicationVelocity;" activePlaceNodeClassName="vtkMRMLMarkupsFiducialNode"  ></Selection>
+  <Interaction
+ id="vtkMRMLInteractionNodeSingleton" name="Interaction" hideFromEditors="true" selectable="true" selected="false" singletonTag="Singleton" currentInteractionMode="ViewTransform" placeModePersistence="false" lastInteractionMode="ViewTransform"  ></Interaction>
+  <View
+ id="vtkMRMLViewNode1" name="View1" hideFromEditors="false" selectable="true" selected="false" singletonTag="1" attributes="MappedInLayout:1" layoutLabel="1" layoutName="1" active="false" visibility="true" backgroundColor="0.756863 0.764706 0.909804" backgroundColor2="0.454902 0.470588 0.745098" layoutColor="0.454902 0.513725 0.913725" orientationMarkerType="none" orientationMarkerSize="medium" rulerType="none" rulerColor="white" AxisLabels="L;R;P;A;I;S" fieldOfView="200" letterSize="0.05" boxVisible="true" fiducialsVisible="true" fiducialLabelsVisible="true" axisLabelsVisible="true" axisLabelsCameraDependent="true" animationMode="Off" viewAxisMode="LookFrom" spinDegrees="2" spinMs="5" spinDirection="YawLeft" rotateDegrees="5" rockLength="200" rockCount="0" stereoType="NoStereo" renderMode="Perspective" useDepthPeeling="0" gpuMemorySize="0" autoReleaseGraphicsResources="false" expectedFPS="8" volumeRenderingQuality="Adaptive" raycastTechnique="Composite" volumeRenderingSurfaceSmoothing="0" volumeRenderingOversamplingFactor="2" linkedControl="0"  ></View>
+  <Slice
+ id="vtkMRMLSliceNodeRed" name="Red" hideFromEditors="false" selectable="true" selected="false" singletonTag="Red" attributes="MappedInLayout:0" layoutLabel="" layoutName="Red" active="false" visibility="true" backgroundColor="0 0 0" backgroundColor2="0 0 0" layoutColor="0.54902 0.54902 0.54902" orientationMarkerType="none" orientationMarkerSize="medium" rulerType="none" rulerColor="white" AxisLabels="L;R;P;A;I;S" fieldOfView="633.209 461.57 0.842038" dimensions="819 597 1" xyzOrigin="0 0 0" sliceResolutionMode="1" uvwExtents="633.209 461.57 0.842038" uvwDimensions="256 256 1" uvwOrigin="0 0 0" activeSlice="0" layoutGridRows="1" layoutGridColumns="1" sliceToRAS="-1 0 0 0.341784 0 1 0 0.341784 0 0 1 0 0 0 0 1" orientationMatrixAxial="-1 0 0 0 1 0 0 0 1" orientationMatrixSagittal="0 0 1 -1 0 0 0 1 0" orientationMatrixCoronal="-1 0 0 0 0 1 0 1 0" orientation="Axial" defaultOrientation="" orientationReference="Axial" jumpMode="1" sliceVisibility="false" widgetVisibility="false" widgetOutlineVisibility="true" useLabelOutline="false" sliceSpacingMode="0" prescribedSliceSpacing="1 1 1"  ></Slice>
+  <Slice
+ id="vtkMRMLSliceNodeYellow" name="Yellow" hideFromEditors="false" selectable="true" selected="false" singletonTag="Yellow" attributes="MappedInLayout:0" layoutLabel="" layoutName="Yellow" active="false" visibility="true" backgroundColor="0 0 0" backgroundColor2="0 0 0" layoutColor="0.54902 0.54902 0.54902" orientationMarkerType="none" orientationMarkerSize="medium" rulerType="none" rulerColor="white" AxisLabels="L;R;P;A;I;S" fieldOfView="350 295.882 0.215358" dimensions="595 503 1" xyzOrigin="0 0 0" sliceResolutionMode="1" uvwExtents="350 295.882 0.215358" uvwDimensions="256 256 1" uvwOrigin="0 0 0" activeSlice="0" layoutGridRows="1" layoutGridColumns="1" sliceToRAS="0 0 1 0 -1 0 0 0.341784 0 1 0 55 0 0 0 1" orientationMatrixAxial="-1 0 0 0 1 0 0 0 1" orientationMatrixSagittal="0 0 1 -1 0 0 0 1 0" orientationMatrixCoronal="-1 0 0 0 0 1 0 1 0" orientation="Sagittal" defaultOrientation="" orientationReference="Sagittal" jumpMode="1" sliceVisibility="false" widgetVisibility="false" widgetOutlineVisibility="true" useLabelOutline="false" sliceSpacingMode="0" prescribedSliceSpacing="1 1 1"  ></Slice>
+  <Slice
+ id="vtkMRMLSliceNodeGreen" name="Green" hideFromEditors="false" selectable="true" selected="false" singletonTag="Green" attributes="MappedInLayout:0" layoutLabel="" layoutName="Green" active="false" visibility="true" backgroundColor="0 0 0" backgroundColor2="0 0 0" layoutColor="0.54902 0.54902 0.54902" orientationMarkerType="none" orientationMarkerSize="medium" rulerType="none" rulerColor="white" AxisLabels="L;R;P;A;I;S" fieldOfView="350.001 295.883 0.213747" dimensions="595 503 1" xyzOrigin="0 0 0" sliceResolutionMode="1" uvwExtents="350.001 295.883 0.213747" uvwDimensions="256 256 1" uvwOrigin="0 0 0" activeSlice="0" layoutGridRows="1" layoutGridColumns="1" sliceToRAS="-1 0 0 0.341784 0 0 1 0 0 1 0 55 0 0 0 1" orientationMatrixAxial="-1 0 0 0 1 0 0 0 1" orientationMatrixSagittal="0 0 1 -1 0 0 0 1 0" orientationMatrixCoronal="-1 0 0 0 0 1 0 1 0" orientation="Coronal" defaultOrientation="" orientationReference="Coronal" jumpMode="1" sliceVisibility="false" widgetVisibility="false" widgetOutlineVisibility="true" useLabelOutline="false" sliceSpacingMode="0" prescribedSliceSpacing="1 1 1"  ></Slice>
+  <Layout
+ id="vtkMRMLLayoutNodevtkMRMLLayoutNode" name="Layout" hideFromEditors="true" selectable="true" selected="false" singletonTag="vtkMRMLLayoutNode" currentViewArrangement="4" guiPanelVisibility="1" bottomPanelVisibility ="1" guiPanelLR="0" collapseSliceControllers="0"
+ numberOfCompareViewRows="1" numberOfCompareViewColumns="1" numberOfLightboxRows="6" numberOfLightboxColumns="6" mainPanelSize="400" secondaryPanelSize="400"  ></Layout>
+  <SliceComposite
+ id="vtkMRMLSliceCompositeNodeRed" name="SliceComposite" hideFromEditors="true" selectable="true" selected="false" singletonTag="Red" references="foregroundVolume:NULL;labelVolume:NULL;" compositing="0" foregroundOpacity="0" labelOpacity="1" linkedControl="0" hotLinkedControl="0" fiducialVisibility="1" fiducialLabelVisibility="1" sliceIntersectionVisibility="0" layoutName="Red" annotationSpace="IJKAndRAS" annotationMode="All" doPropagateVolumeSelection="1"  ></SliceComposite>
+  <SliceComposite
+ id="vtkMRMLSliceCompositeNodeYellow" name="SliceComposite_1" hideFromEditors="true" selectable="true" selected="false" singletonTag="Yellow" references="foregroundVolume:NULL;labelVolume:NULL;" compositing="0" foregroundOpacity="0" labelOpacity="1" linkedControl="0" hotLinkedControl="0" fiducialVisibility="1" fiducialLabelVisibility="1" sliceIntersectionVisibility="0" layoutName="Yellow" annotationSpace="IJKAndRAS" annotationMode="All" doPropagateVolumeSelection="1"  ></SliceComposite>
+  <SliceComposite
+ id="vtkMRMLSliceCompositeNodeGreen" name="SliceComposite_2" hideFromEditors="true" selectable="true" selected="false" singletonTag="Green" references="foregroundVolume:NULL;labelVolume:NULL;" compositing="0" foregroundOpacity="0" labelOpacity="1" linkedControl="0" hotLinkedControl="0" fiducialVisibility="1" fiducialLabelVisibility="1" sliceIntersectionVisibility="0" layoutName="Green" annotationSpace="IJKAndRAS" annotationMode="All" doPropagateVolumeSelection="1"  ></SliceComposite>
+  <ClipModels
+ id="vtkMRMLClipModelsNodevtkMRMLClipModelsNode" name="ClipModels" hideFromEditors="true" selectable="true" selected="false" singletonTag="vtkMRMLClipModelsNode" clipType="0" redSliceClipState="0" yellowSliceClipState="0" greenSliceClipState="0"  ></ClipModels>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNodeDataProbe" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" singletonTag="DataProbe"  ></ScriptedModule>
+  <ChartView
+ id="vtkMRMLChartViewNodeChartView1" name="ChartView1" hideFromEditors="false" selectable="true" selected="false" singletonTag="ChartView1" attributes="MappedInLayout:0" layoutLabel="1" layoutName="ChartView1" active="false" visibility="true" backgroundColor="0 0 0" backgroundColor2="0 0 0" layoutColor="0.454902 0.513725 0.913725" rulerColor="white" AxisLabels="L;R;P;A;I;S"  ></ChartView>
+  <Camera
+ id="vtkMRMLCameraNode3" name="Default Scene Camera" hideFromEditors="false" selectable="true" selected="false" userTags="" position="349.456 886.352 191.49" focalPoint="32.8559 10.4349 102.786" viewUp="0.0106018 -0.104542 0.994464" parallelProjection="false" parallelScale="1" viewAngle="30" appliedTransform="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1"  ></Camera>
+  <SubjectHierarchy
+ id="vtkMRMLSubjectHierarchyNode1" name="SubjectHierarchy" hideFromEditors="false" selectable="true" selected="false" attributes="SubjectHierarchyVersion:2"  >
+    <SubjectHierarchyItem id="102" name="Scene" parent="0" type="" expanded="true" attributes="Level^Scene|"></SubjectHierarchyItem>
+    <SubjectHierarchyItem id="103" name="UnresolvedItems" parent="0" type="" expanded="true" attributes="Level^UnresolvedItems|">
+      <SubjectHierarchyItem id="60" name="Scene" parent="103" type="" expanded="true" attributes="Level^Scene|"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="61" name="UnresolvedItems" parent="103" type="" expanded="true" attributes="Level^UnresolvedItems|"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="181" name="Scene" parent="61" type="" expanded="true" attributes="Level^Scene|"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="182" name="UnresolvedItems" parent="61" type="" expanded="true" attributes="Level^UnresolvedItems|"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="69" name="Scene" parent="182" type="" expanded="true" attributes="Level^Scene|"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="70" name="UnresolvedItems" parent="182" type="" expanded="true" attributes="Level^UnresolvedItems|"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="184" name="Scene" parent="70" type="" expanded="true" attributes="Level^Scene|"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="185" name="UnresolvedItems" parent="70" type="" expanded="true" attributes="Level^UnresolvedItems|"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="162" name="Scene" parent="185" type="" expanded="true" attributes="Level^Scene|"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="163" name="UnresolvedItems" parent="185" type="" expanded="true" attributes="Level^UnresolvedItems|"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="129" name="Scene" parent="163" type="" expanded="true" attributes="Level^Scene|"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="130" name="UnresolvedItems" parent="163" type="" expanded="true" attributes="Level^UnresolvedItems|"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="115" dataNode="vtkMRMLModelNode4" parent="107" type="Models" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="116" dataNode="vtkMRMLModelNode5" parent="107" type="Models" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="117" dataNode="vtkMRMLModelNode8" parent="107" type="Models" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="118" dataNode="vtkMRMLModelNode9" parent="107" type="Models" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="119" dataNode="vtkMRMLLinearTransformNode4" parent="107" type="Transforms" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="120" dataNode="vtkMRMLLinearTransformNode5" parent="107" type="Transforms" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="121" dataNode="vtkMRMLLinearTransformNode7" parent="107" type="Transforms" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="122" dataNode="vtkMRMLLinearTransformNode8" parent="107" type="Transforms" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="123" dataNode="vtkMRMLModelNode10" parent="107" type="Models" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="124" dataNode="vtkMRMLSceneViewNode1" parent="107" type="SceneViews" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="125" dataNode="vtkMRMLLinearTransformNode9" parent="107" type="Transforms" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="126" dataNode="vtkMRMLLinearTransformNode6" parent="107" type="Transforms" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="127" dataNode="vtkMRMLMarkupsFiducialNode3" parent="107" type="Markups" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="128" dataNode="vtkMRMLMarkupsFiducialNode4" parent="107" type="Markups" expanded="true"></SubjectHierarchyItem>
+      <SubjectHierarchyItem id="107" name="Scene" parent="130" type="" expanded="true" attributes="Level^Scene|"></SubjectHierarchyItem></SubjectHierarchyItem></SubjectHierarchy>
+  <Camera
+ id="vtkMRMLCameraNode2" name="Mi camara" hideFromEditors="false" selectable="true" selected="false" userTags="" position="630.7 856.393 501.158" focalPoint="32.8559 10.4349 102.786" viewUp="-0.0221447 -0.413081 0.910425" parallelProjection="false" parallelScale="1" viewAngle="30" appliedTransform="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1"  ></Camera>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode18" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode17" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode16" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode15" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode14" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode13" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode12" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode11" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode10" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode9" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode8" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode7" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" ModuleName ="DataProbe"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode6" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode5" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode4" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode3" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode2" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ScriptedModule
+ id="vtkMRMLScriptedModuleNode1" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false"  ></ScriptedModule>
+  <ModelStorage
+ id="vtkMRMLModelStorageNode1" name="ModelStorage" hideFromEditors="true" selectable="true" selected="false" fileName="Arco.vtk" useCompression="1" defaultWriteFileExtension="vtk" readState="0" writeState="4" coordinateSystem="RAS"  ></ModelStorage>
+  <ModelDisplay
+ id="vtkMRMLModelDisplayNode4" name="ModelDisplay" hideFromEditors="true" selectable="true" selected="false" color="1 0 0" edgeColor="0 0 0" selectedColor="1 0 0" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 -1" activeScalarName="" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0"  ></ModelDisplay>
+  <Model
+ id="vtkMRMLModelNode4" name="Arco" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLModelDisplayNode4;storage:vtkMRMLModelStorageNode1;transform:vtkMRMLLinearTransformNode8;" userTags=""  ></Model>
+  <ModelStorage
+ id="vtkMRMLModelStorageNode2" name="ModelStorage_1" hideFromEditors="true" selectable="true" selected="false" fileName="Aguja_de_Puncion.vtk" useCompression="1" defaultWriteFileExtension="vtk" readState="0" writeState="4" coordinateSystem="RAS"  ></ModelStorage>
+  <ModelDisplay
+ id="vtkMRMLModelDisplayNode5" name="ModelDisplay_1" hideFromEditors="true" selectable="true" selected="false" color="0 0.333333 1" edgeColor="0 0 0" selectedColor="1 0 0" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 -1" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0"  ></ModelDisplay>
+  <Model
+ id="vtkMRMLModelNode6" name="Aguja_de_Puncion" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLModelDisplayNode5;storage:vtkMRMLModelStorageNode2;transform:vtkMRMLLinearTransformNode7;" userTags=""  ></Model>
+  <ModelStorage
+ id="vtkMRMLModelStorageNode5" name="ModelStorage_4" hideFromEditors="true" selectable="true" selected="false" fileName="CoordinateModel.vtk" useCompression="1" defaultWriteFileExtension="vtk" readState="0" writeState="0" coordinateSystem="RAS"  ></ModelStorage>
+  <ModelDisplay
+ id="vtkMRMLModelDisplayNode8" name="ModelDisplay_4" hideFromEditors="true" selectable="true" selected="false" color="1 0 0" edgeColor="0 0 0" selectedColor="1 0 0" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 -1" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0"  ></ModelDisplay>
+  <Model
+ id="vtkMRMLModelNode8" name="CoordinateModel" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLModelDisplayNode8;storage:vtkMRMLModelStorageNode5;" userTags=""  ></Model>
+  <ModelStorage
+ id="vtkMRMLModelStorageNode6" name="ModelStorage_5" hideFromEditors="true" selectable="true" selected="false" fileName="Fantasma_Modelo.vtk" useCompression="1" defaultWriteFileExtension="vtk" readState="0" writeState="4" coordinateSystem="RAS"  ></ModelStorage>
+  <ModelDisplay
+ id="vtkMRMLModelDisplayNode9" name="ModelDisplay_5" hideFromEditors="true" selectable="true" selected="false" color="1 1 0" edgeColor="0 0 0" selectedColor="1 0 0" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 -1" activeScalarName="" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0"  ></ModelDisplay>
+  <Model
+ id="vtkMRMLModelNode9" name="Fantasma_Modelo" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLModelDisplayNode9;storage:vtkMRMLModelStorageNode6;" userTags=""  ></Model>
+  <TransformStorage
+ id="vtkMRMLTransformStorageNode1" name="TransformStorage" hideFromEditors="true" selectable="true" selected="false" fileName="Transformada_Isocentro.h5" useCompression="1" defaultWriteFileExtension="h5" readState="0" writeState="4" preferITKv3CompatibleTransforms="false"  ></TransformStorage>
+  <LinearTransform
+ id="vtkMRMLLinearTransformNode4" name="Transformada_Isocentro" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLTransformDisplayNode1;storage:vtkMRMLTransformStorageNode1;" userTags="" matrixTransformToParent="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1"  ></LinearTransform>
+  <TransformStorage
+ id="vtkMRMLTransformStorageNode2" name="TransformStorage_1" hideFromEditors="true" selectable="true" selected="false" fileName="Transformada_Correctora_del_Volumen.h5" useCompression="1" defaultWriteFileExtension="h5" readState="0" writeState="4" preferITKv3CompatibleTransforms="false"  ></TransformStorage>
+  <LinearTransform
+ id="vtkMRMLLinearTransformNode5" name="Transformada_Correctora_del_Volumen" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLTransformStorageNode2;" userTags="" matrixTransformToParent="0.999613 -0.0251345 0.0118833 -3.74989  0.0250289 0.999647 0.00894799 -11.2204  -0.012104 -0.00864711 0.999889 44.3359  0 0 0 1"  ></LinearTransform>
+  <TransformStorage
+ id="vtkMRMLTransformStorageNode4" name="TransformStorage_3" hideFromEditors="true" selectable="true" selected="false" fileName="Transformada_angulo_Beta.h5" useCompression="1" defaultWriteFileExtension="h5" readState="0" writeState="4" preferITKv3CompatibleTransforms="false"  ></TransformStorage>
+  <LinearTransform
+ id="vtkMRMLLinearTransformNode7" name="Transformada_angulo_Beta" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLTransformStorageNode4;transform:vtkMRMLLinearTransformNode8;" userTags="" matrixTransformToParent="0.707107 0 -0.707107 0  0 1 0 0  0.707107 0 0.707107 0  0 0 0 1"  ></LinearTransform>
+  <TransformStorage
+ id="vtkMRMLTransformStorageNode5" name="TransformStorage_4" hideFromEditors="true" selectable="true" selected="false" fileName="Transformada_angulo_Alfa.h5" useCompression="1" defaultWriteFileExtension="h5" readState="0" writeState="4" preferITKv3CompatibleTransforms="false"  ></TransformStorage>
+  <LinearTransform
+ id="vtkMRMLLinearTransformNode8" name="Transformada_angulo_Alfa" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLTransformStorageNode5;transform:vtkMRMLLinearTransformNode6;" userTags="" matrixTransformToParent="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1"  ></LinearTransform>
+  <ModelStorage
+ id="vtkMRMLModelStorageNode7" name="ModelStorage_6" hideFromEditors="true" selectable="true" selected="false" fileName="N_Locators.vtk" useCompression="1" defaultWriteFileExtension="vtk" readState="0" writeState="0" coordinateSystem="RAS"  ></ModelStorage>
+  <ModelDisplay
+ id="vtkMRMLModelDisplayNode10" name="ModelDisplay_6" hideFromEditors="true" selectable="true" selected="false" color="1 0 0" edgeColor="0 0 0" selectedColor="1 0 0" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 -1" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0"  ></ModelDisplay>
+  <Model
+ id="vtkMRMLModelNode10" name="N_Locators" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLModelDisplayNode10;storage:vtkMRMLModelStorageNode7;" userTags=""  ></Model>
+  <LinearTransform
+ id="vtkMRMLLinearTransformNode9" name="Transformada_Arruinadora" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLTransformStorageNode6;" userTags="" matrixTransformToParent="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1"  ></LinearTransform>
+  <TransformStorage
+ id="vtkMRMLTransformStorageNode6" name="TransformStorage_5" hideFromEditors="true" selectable="true" selected="false" fileName="Transformada_Arruinadora.h5" useCompression="1" defaultWriteFileExtension="h5" readState="0" writeState="4" preferITKv3CompatibleTransforms="true"  ></TransformStorage>
+  <AnnotationHierarchyNode
+ id="vtkMRMLAnnotationHierarchyNode3" name="AnnotationHierarchy" hideFromEditors="true" selectable="true" selected="false" sortingValue="35" allowMultipleChildren="false" expanded="true"  ></AnnotationHierarchyNode>
+  <AnnotationDisplay
+ id="vtkMRMLAnnotationDisplayNode1" name="AnnotationDisplay" hideFromEditors="true" selectable="true" selected="false" color="0.7373 0.2549 0.1098" edgeColor="0 0 0" selectedColor="0.2667 0.6745 0.3922" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 100" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0"  ></AnnotationDisplay>
+  <AnnotationDisplay
+ id="vtkMRMLAnnotationDisplayNode2" name="AnnotationDisplay_1" hideFromEditors="true" selectable="true" selected="false" color="0.7373 0.2549 0.1098" edgeColor="0 0 0" selectedColor="0.2667 0.6745 0.3922" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 100" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0"  ></AnnotationDisplay>
+  <VolumePropertyStorage
+ id="vtkMRMLVolumePropertyStorageNode1" name="VolumePropertyStorage" hideFromEditors="true" selectable="true" selected="false" fileName="../Espacio%20Marco/VolumeProperty.vp" useCompression="1" defaultWriteFileExtension="vp" readState="0" writeState="4"  ></VolumePropertyStorage>
+  <TransformDisplayNode
+ id="vtkMRMLTransformDisplayNode1" name="TransformDisplayNode" hideFromEditors="true" selectable="true" selected="false" references="region:vtkMRMLSliceNodeRed;" color="0.5 0.5 0.5" edgeColor="0 0 0" selectedColor="1 0 0" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="false" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="true" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseManual" scalarRange="0 100" colorNodeID="vtkMRMLProceduralColorNode1" activeScalarName="DisplacementMagnitude" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" VisualizationMode="GLYPH" GlyphSpacingMm="10" GlyphScalePercent="100" GlyphDisplayRangeMaxMm="100" GlyphDisplayRangeMinMm="0.01" GlyphType="ARROW" GlyphTipLengthPercent="30" GlyphDiameterMm="5" GlyphShaftDiameterPercent="40" GlyphResolution="6" GridScalePercent="100" GridSpacingMm="15" GridLineDiameterMm="1" GridResolutionMm="5" GridShowNonWarped="0" ContourResolutionMm="5" ContourLevelsMm="2 4 6 8 10 12 14 16 18" ContourOpacity="0.8" EditorVisibility="0" EditorSliceIntersectionVisibility="0" EditorTranslationEnabled="1" EditorRotationEnabled="1" EditorScalingEnabled="0"  ></TransformDisplayNode>
+  <ProceduralColorStorage
+ id="vtkMRMLProceduralColorStorageNode1" name="ProceduralColorStorage" hideFromEditors="true" selectable="true" selected="false" fileName="../Espacio%20Marco/Displacement%20to%20color.txt" useCompression="1" defaultWriteFileExtension="txt" readState="4" writeState="0"  ></ProceduralColorStorage>
+  <ProceduralColorStorage
+ id="vtkMRMLProceduralColorStorageNode2" name="ProceduralColorStorage_1" hideFromEditors="true" selectable="true" selected="false" fileName="../Espacio%20Marco/Displacement%20to%20color_1.txt" useCompression="1" defaultWriteFileExtension="txt" readState="4" writeState="0"  ></ProceduralColorStorage>
+  <ProceduralColorStorage
+ id="vtkMRMLProceduralColorStorageNode3" name="ProceduralColorStorage_2" hideFromEditors="true" selectable="true" selected="false" fileName="../Espacio%20Marco/Displacement%20to%20color_2.txt" useCompression="1" defaultWriteFileExtension="txt" readState="0" writeState="4"  ></ProceduralColorStorage>
+  <ProceduralColor
+ id="vtkMRMLProceduralColorNode1" name="Displacement to color" hideFromEditors="false" selectable="true" selected="false" attributes="Category:Transform display" references="storage:vtkMRMLProceduralColorStorageNode4;" userTags="" type="14"  ></ProceduralColor>
+  <TransformStorage
+ id="vtkMRMLTransformStorageNode3" name="TransformStorage_2" hideFromEditors="true" selectable="true" selected="false" fileName="Transformada_Der_Izq.h5" useCompression="1" defaultWriteFileExtension="h5" readState="0" writeState="4" preferITKv3CompatibleTransforms="false"  ></TransformStorage>
+  <LinearTransform
+ id="vtkMRMLLinearTransformNode6" name="Transformada_Der_Izq" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLTransformStorageNode3;transform:vtkMRMLLinearTransformNode4;" userTags="" matrixTransformToParent="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1"  ></LinearTransform>
+  <ProceduralColorStorage
+ id="vtkMRMLProceduralColorStorageNode4" name="ProceduralColorStorage_3" hideFromEditors="true" selectable="true" selected="false" fileName="Displacement%20to%20color.txt" useCompression="1" defaultWriteFileExtension="txt" readState="0" writeState="4"  ></ProceduralColorStorage>
+  <MarkupsDisplay
+ id="vtkMRMLMarkupsDisplayNode3" name="vtkMRMLMarkupsDisplayNode3" hideFromEditors="true" selectable="true" selected="false" color="0.4 1 1" edgeColor="0 0 0" selectedColor="1 0.5 0.5" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 100" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" propertiesLabelVisibility="true" pointLabelsVisibility="true" textScale="3.4" glyphScale="2.1" glyphSize="5" useGlyphScale="true" glyphType="ThickArrow2D" snapMode="toVisibleSurface" sliceProjection="false" sliceProjectionUseFiducialColor="true" sliceProjectionOutlinedBehindSlicePlane="false" sliceProjectionColor="1 1 1" sliceProjectionOpacity="0.6" curveLineSizeMode="UseLineThickness" lineThickness="0.2" lineDiameter="1" lineColorFadingStart="1" lineColorFadingEnd="10" lineColorFadingSaturation="1" lineColorFadingHueOffset="0" handlesInteractive="false" translationHandleVisibility="true" rotationHandleVisibility="true" scaleHandleVisibility="true" fillVisibility="true" outlineVisibility="true" fillOpacity="0.5" outlineOpacity="1" occludedVisibility="false" occludedOpacity="0.3" textProperty="font-family:Arial;font-size:5px;font-style:normal;font-weight:normal;color:rgba(255,255,255,1);background-color:rgba(0,0,0,0);border-width:1px;border-color:rgba(255,255,255,0.0);text-shadow:1px 1px 0px rgba(0,0,0,0.0);" activeColor="0.4 1 0"  ></MarkupsDisplay>
+  <MarkupsFiducial
+ id="vtkMRMLMarkupsFiducialNode3" name="Target" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLMarkupsDisplayNode3;storage:vtkMRMLMarkupsFiducialStorageNode1;" userTags="" locked="false" markupLabelFormat="%N-%d" interactionHandleToWorldMatrix="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" maximumNumberOfControlPoints="0" requiredNumberOfControlPoints="0"  ></MarkupsFiducial>
+  <MarkupsDisplay
+ id="vtkMRMLMarkupsDisplayNode4" name="vtkMRMLMarkupsDisplayNode4" hideFromEditors="true" selectable="true" selected="false" color="0.4 1 1" edgeColor="0 0 0" selectedColor="1 0.5 0.5" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 100" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" propertiesLabelVisibility="true" pointLabelsVisibility="true" textScale="3.4" glyphScale="2.1" glyphSize="5" useGlyphScale="true" glyphType="ThickArrow2D" snapMode="toVisibleSurface" sliceProjection="false" sliceProjectionUseFiducialColor="true" sliceProjectionOutlinedBehindSlicePlane="false" sliceProjectionColor="1 1 1" sliceProjectionOpacity="0.6" curveLineSizeMode="UseLineThickness" lineThickness="0.2" lineDiameter="1" lineColorFadingStart="1" lineColorFadingEnd="10" lineColorFadingSaturation="1" lineColorFadingHueOffset="0" handlesInteractive="false" translationHandleVisibility="true" rotationHandleVisibility="true" scaleHandleVisibility="true" fillVisibility="true" outlineVisibility="true" fillOpacity="0.5" outlineOpacity="1" occludedVisibility="false" occludedOpacity="0.3" textProperty="font-family:Arial;font-size:5px;font-style:normal;font-weight:normal;color:rgba(255,255,255,1);background-color:rgba(0,0,0,0);border-width:1px;border-color:rgba(255,255,255,0.0);text-shadow:1px 1px 0px rgba(0,0,0,0.0);" activeColor="0.4 1 0"  ></MarkupsDisplay>
+  <MarkupsFiducial
+ id="vtkMRMLMarkupsFiducialNode4" name="F" hideFromEditors="false" selectable="true" selected="false" references="display:vtkMRMLMarkupsDisplayNode4;storage:vtkMRMLMarkupsFiducialStorageNode2;" userTags="" locked="false" markupLabelFormat="%N-%d" interactionHandleToWorldMatrix="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" maximumNumberOfControlPoints="0" requiredNumberOfControlPoints="0"  ></MarkupsFiducial>
+  <MarkupsFiducialStorage
+ id="vtkMRMLMarkupsFiducialStorageNode1" name="MarkupsFiducialStorage" hideFromEditors="true" selectable="true" selected="false" fileName="../Espacio%20Marco/Target.fcsv" useCompression="1" defaultWriteFileExtension="fcsv" readState="4" writeState="0" coordinateSystem="RAS"  ></MarkupsFiducialStorage>
+  <MarkupsFiducialStorage
+ id="vtkMRMLMarkupsFiducialStorageNode2" name="MarkupsFiducialStorage_1" hideFromEditors="true" selectable="true" selected="false" fileName="../Espacio%20Marco/F.fcsv" useCompression="1" defaultWriteFileExtension="fcsv" readState="0" writeState="4" coordinateSystem="RAS"  ></MarkupsFiducialStorage>
+</SceneView>
+ <SceneViewStorage
+  id="vtkMRMLSceneViewStorageNode1" name="SceneViewStorage" hideFromEditors="true" selectable="true" selected="false" fileName="Master%20Scene%20View.png" useCompression="1" defaultWriteFileExtension="png" readState="0" writeState="4" ></SceneViewStorage>
+ <LinearTransform
+  id="vtkMRMLLinearTransformNode9" name="Transformada_Arruinadora" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLTransformStorageNode6;" userTags="" matrixTransformToParent="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" ></LinearTransform>
+ <TransformStorage
+  id="vtkMRMLTransformStorageNode6" name="TransformStorage_5" hideFromEditors="true" selectable="true" selected="false" fileName="Transformada_Arruinadora.h5" useCompression="1" defaultWriteFileExtension="h5" readState="0" writeState="4" preferITKv3CompatibleTransforms="true" ></TransformStorage>
+ <AnnotationHierarchyNode
+  id="vtkMRMLAnnotationHierarchyNode3" name="AnnotationHierarchy" hideFromEditors="true" selectable="true" selected="false" sortingValue="35" allowMultipleChildren="false" expanded="true" ></AnnotationHierarchyNode>
+ <AnnotationDisplay
+  id="vtkMRMLAnnotationDisplayNode1" name="AnnotationDisplay" hideFromEditors="true" selectable="true" selected="false" color="0.7373 0.2549 0.1098" edgeColor="0 0 0" selectedColor="0.2667 0.6745 0.3922" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 100" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0" ></AnnotationDisplay>
+ <AnnotationDisplay
+  id="vtkMRMLAnnotationDisplayNode2" name="AnnotationDisplay_1" hideFromEditors="true" selectable="true" selected="false" color="0.7373 0.2549 0.1098" edgeColor="0 0 0" selectedColor="0.2667 0.6745 0.3922" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="true" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="false" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseData" scalarRange="0 100" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" sliceDisplayMode="intersection" thresholdEnabled="false" thresholdRange="0 -1" backfaceColorHSVOffset="-0.05 -0.1 0" ></AnnotationDisplay>
+ <VolumePropertyStorage
+  id="vtkMRMLVolumePropertyStorageNode1" name="VolumePropertyStorage" hideFromEditors="true" selectable="true" selected="false" fileName="../Espacio%20Marco/VolumeProperty.vp" useCompression="1" defaultWriteFileExtension="vp" readState="0" writeState="4" ></VolumePropertyStorage>
+ <TransformDisplayNode
+  id="vtkMRMLTransformDisplayNode1" name="TransformDisplayNode" hideFromEditors="true" selectable="true" selected="false" references="region:vtkMRMLSliceNodeRed;" color="0.5 0.5 0.5" edgeColor="0 0 0" selectedColor="1 0 0" selectedAmbient="0.4" ambient="0" diffuse="1" selectedSpecular="0.5" specular="0" power="1" opacity="1" sliceIntersectionOpacity="1" pointSize="1" lineWidth="1" representation="2" lighting="true" interpolation="1" shading="true" visibility="false" visibility2D="false" visibility3D="true" edgeVisibility="false" clipping="false" sliceIntersectionThickness="1" frontfaceCulling="false" backfaceCulling="true" scalarVisibility="true" vectorVisibility="false" tensorVisibility="false" interpolateTexture="false" scalarRangeFlag="UseManual" scalarRange="0 100" colorNodeID="vtkMRMLProceduralColorNode1" activeScalarName="DisplacementMagnitude" activeAttributeLocation="point" viewNodeRef="" folderDisplayOverrideAllowed="true" VisualizationMode="GLYPH" GlyphSpacingMm="10" GlyphScalePercent="100" GlyphDisplayRangeMaxMm="100" GlyphDisplayRangeMinMm="0.01" GlyphType="ARROW" GlyphTipLengthPercent="30" GlyphDiameterMm="5" GlyphShaftDiameterPercent="40" GlyphResolution="6" GridScalePercent="100" GridSpacingMm="15" GridLineDiameterMm="1" GridResolutionMm="5" GridShowNonWarped="0" ContourResolutionMm="5" ContourLevelsMm="2 4 6 8 10 12 14 16 18" ContourOpacity="0.8" EditorVisibility="0" EditorSliceIntersectionVisibility="0" EditorTranslationEnabled="1" EditorRotationEnabled="1" EditorScalingEnabled="0" ></TransformDisplayNode>
+ <ProceduralColorStorage
+  id="vtkMRMLProceduralColorStorageNode1" name="ProceduralColorStorage" hideFromEditors="true" selectable="true" selected="false" fileName="../Espacio%20Marco/Displacement%20to%20color.txt" useCompression="1" defaultWriteFileExtension="txt" readState="4" writeState="0" ></ProceduralColorStorage>
+ <ProceduralColorStorage
+  id="vtkMRMLProceduralColorStorageNode2" name="ProceduralColorStorage_1" hideFromEditors="true" selectable="true" selected="false" fileName="../Espacio%20Marco/Displacement%20to%20color_1.txt" useCompression="1" defaultWriteFileExtension="txt" readState="4" writeState="0" ></ProceduralColorStorage>
+ <ProceduralColorStorage
+  id="vtkMRMLProceduralColorStorageNode3" name="ProceduralColorStorage_2" hideFromEditors="true" selectable="true" selected="false" fileName="../Espacio%20Marco/Displacement%20to%20color_2.txt" useCompression="1" defaultWriteFileExtension="txt" readState="0" writeState="4" ></ProceduralColorStorage>
+ <ProceduralColor
+  id="vtkMRMLProceduralColorNode1" name="Displacement to color" hideFromEditors="false" selectable="true" selected="false" attributes="Category:" references="storage:vtkMRMLProceduralColorStorageNode4;" userTags="" type="14" ></ProceduralColor>
+ <TransformStorage
+  id="vtkMRMLTransformStorageNode3" name="TransformStorage_2" hideFromEditors="true" selectable="true" selected="false" fileName="Transformada_Der_Izq.h5" useCompression="1" defaultWriteFileExtension="h5" readState="0" writeState="4" preferITKv3CompatibleTransforms="false" ></TransformStorage>
+ <LinearTransform
+  id="vtkMRMLLinearTransformNode6" name="Transformada_Der_Izq" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLTransformStorageNode3;transform:vtkMRMLLinearTransformNode4;" userTags="" matrixTransformToParent="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" ></LinearTransform>
+ <ProceduralColorStorage
+  id="vtkMRMLProceduralColorStorageNode4" name="ProceduralColorStorage_3" hideFromEditors="true" selectable="true" selected="false" fileName="Displacement%20to%20color.txt" useCompression="1" defaultWriteFileExtension="txt" readState="0" writeState="4" ></ProceduralColorStorage>
+ <Model
+  id="vtkMRMLModelNode15" name="SurfaceRegistration_Arco_hardenCopy_11740" hideFromEditors="true" selectable="true" selected="false" userTags="" ></Model>
+ <Model
+  id="vtkMRMLModelNode16" name="SurfaceRegistration_Aguja_de_Puncion_hardenCopy_11740" hideFromEditors="true" selectable="true" selected="false" userTags="" ></Model>
+ <Model
+  id="vtkMRMLModelNode17" name="SurfaceRegistration_CoordinateModel_hardenCopy_11740" hideFromEditors="true" selectable="true" selected="false" userTags="" ></Model>
+ <Model
+  id="vtkMRMLModelNode18" name="SurfaceRegistration_Fantasma_Modelo_hardenCopy_11740" hideFromEditors="true" selectable="true" selected="false" userTags="" ></Model>
+ <Model
+  id="vtkMRMLModelNode19" name="SurfaceRegistration_N_Locators_hardenCopy_11740" hideFromEditors="true" selectable="true" selected="false" userTags="" ></Model>
+ <Model
+  id="vtkMRMLModelNode5" name="SurfaceRegistration_Arco_hardenCopy_11740" hideFromEditors="true" selectable="true" selected="false" userTags="" ></Model>
+ <Model
+  id="vtkMRMLModelNode7" name="SurfaceRegistration_Aguja_de_Puncion_hardenCopy_11740" hideFromEditors="true" selectable="true" selected="false" userTags="" ></Model>
+ <Model
+  id="vtkMRMLModelNode11" name="SurfaceRegistration_CoordinateModel_hardenCopy_11740" hideFromEditors="true" selectable="true" selected="false" userTags="" ></Model>
+ <Model
+  id="vtkMRMLModelNode12" name="SurfaceRegistration_Fantasma_Modelo_hardenCopy_11740" hideFromEditors="true" selectable="true" selected="false" userTags="" ></Model>
+ <Model
+  id="vtkMRMLModelNode13" name="SurfaceRegistration_N_Locators_hardenCopy_11740" hideFromEditors="true" selectable="true" selected="false" userTags="" ></Model>
+ <LinearTransform
+  id="vtkMRMLLinearTransformNode5" name="Transformada_Correctora_del_Volumen" hideFromEditors="false" selectable="true" selected="false" references="storage:vtkMRMLTransformStorageNode2;" userTags="" matrixTransformToParent="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1" ></LinearTransform>
+ <ScriptedModule
+  id="vtkMRMLScriptedModuleNode19" name="Transfe_data" hideFromEditors="true" selectable="true" selected="false" ></ScriptedModule>
+ <VolumePropertyStorage
+  id="vtkMRMLVolumePropertyStorageNode2" name="VolumePropertyStorage_1" hideFromEditors="true" selectable="true" selected="false" fileName="CT-AAA.vp" useCompression="1" defaultWriteFileExtension="vp" readState="0" writeState="4" ></VolumePropertyStorage>
+ <VolumePropertyStorage
+  id="vtkMRMLVolumePropertyStorageNode3" name="VolumePropertyStorage_2" hideFromEditors="true" selectable="true" selected="false" fileName="CT-AAA.vp" useCompression="1" defaultWriteFileExtension="vp" readState="0" writeState="4" ></VolumePropertyStorage>
+ <VolumePropertyStorage
+  id="vtkMRMLVolumePropertyStorageNode4" name="VolumePropertyStorage_3" hideFromEditors="true" selectable="true" selected="false" fileName="CT-AAA.vp" useCompression="1" defaultWriteFileExtension="vp" readState="0" writeState="4" ></VolumePropertyStorage>
+ <VolumePropertyStorage
+  id="vtkMRMLVolumePropertyStorageNode5" name="VolumePropertyStorage_4" hideFromEditors="true" selectable="true" selected="false" fileName="CT-Muscle.vp" useCompression="1" defaultWriteFileExtension="vp" readState="0" writeState="4" ></VolumePropertyStorage>
+ <TransformStorage
+  id="vtkMRMLTransformStorageNode2" name="TransformStorage_1" hideFromEditors="true" selectable="true" selected="false" fileName="Transformada_Correctora_del_Volumen.h5" useCompression="1" defaultWriteFileExtension="h5" readState="0" writeState="4" preferITKv3CompatibleTransforms="false" ></TransformStorage>
+</MRML>
