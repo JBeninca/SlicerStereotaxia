@@ -1,12 +1,12 @@
 # SlicerStereotaxia
 3DSlicer module for stereotactic frame coordinates
 
-Módulo para 3DSlicer que calcula las coordenadas 3D para cirugías de cerebro con marco Estereotáxico 
 
-Hay 2 versiones: 
+SlicerStereotaxia gives 3D coordinates for neurosurgery planning in a Stereotactic Frame.
 
-- Estereotaxia.py : es un módulo con gráficos del marco estereotáxico Micromar que puede planificar la cirugía, modificando manualmente los parámetros de abordaje.
+Two versions:
 
-- Estereotaxia_Lite.py: realiza los cálculos de conversión de coordenadas de fiduciarios 2D en TAC a coordenadas 3D, sin representación gráfica.
-
-ambos archivos .py y los directorios con contenido necesario se instalan dentro 3DSlicer.- 
+- SlicerStereotaxia.py : a module with graphics (stereotatic frame, volume, entry_point, target_point) that do registration and 3D coordinates convertion for neurosurgery planing. you can modify manually the frame parameters.
+- SlicerStereotaxiaLite.py: converts 2D fiducial and Target coordinates into 3D reference on a CT scan volume.
+ 
+both run into 3DSlicer platform after instalation as a scripted module.-
