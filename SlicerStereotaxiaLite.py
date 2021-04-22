@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Estereotaxia_Simplex version 16.1206
+# SlicerStereotaxiaLite version 16.1206
 import os
 import logging
 import math
