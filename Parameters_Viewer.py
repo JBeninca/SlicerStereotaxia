@@ -16,7 +16,7 @@ class Parameters_Viewer(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
         self.parent.title = "Parameters_Viewer"
-        self.parent.categories = ["Estereotaxia"]
+        self.parent.categories = ["Stereotaxia"]
         self.parent.dependencies = []
         self.parent.contributors = ["Dr. Jorge Beninca."]
         self.parent.helpText = "Esta es la Version 21.0203"
@@ -29,7 +29,7 @@ class Parameters_ViewerWidget(ScriptedLoadableModuleWidget):
     def setup(self):
         ScriptedLoadableModuleWidget.setup(self)
         self.Registracion_Bton = ctk.ctkCollapsibleButton()
-        self.Registracion_Bton.text = "Registracion y calculo del Target"
+        self.Registracion_Bton.text = "Muestra Parametros"
         self.layout.addWidget(self.Registracion_Bton)
         self.Grilla1 = qt.QGridLayout(self.Registracion_Bton)
         
@@ -65,20 +65,18 @@ class Parameters_ViewerWidget(ScriptedLoadableModuleWidget):
             # TODO actualizar cuando cambia el transe node
             print("vino a Inicializa.")
             try:
-                transfe = slicer.util.getNode("Transfe_data")
-                print("Ok, se ha cargado el nodo Transfe_data.-")
+                transfe = slicer.util.getNode("Param_data")
+                print("Ok, se ha cargado el nodo Param_data.-")
             except:
-                adv = ("No existe el nodo Transfe_data, del que se pueda leer.")
+                adv = ("No existe el nodo Param_data, del que se pueda leer.")
                 slicer.util.warningDisplay(adv, windowTitle="Error", parent=None, standardButtons=None)
                 return
-            #print(dir(transfe))
             self.textEdit_1.setPlainText("")
             self.textEdit_2.setPlainText("")
             self.mixObservador_1 = slicer.util.VTKObservationMixin()
-            self.mixObservador_1.removeObservers()
+            #self.mixObservador_1.removeObservers()
             self.mixObservador_1.addObserver(transfe, vtk.vtkCommand.AnyEvent, self.escribe)
-            print(dir(transfe))
-
+            
         elif modo == "Registracion":
             pass
         elif modo == "Target":
@@ -87,21 +85,21 @@ class Parameters_ViewerWidget(ScriptedLoadableModuleWidget):
         elif modo == "Lectura":
             # TODO actualizar cuando cambia el transe node
             print("vino a Lectura")
-            transfe = slicer.util.getNode("Transfe_data")
-            transfe.GetParameterNames()
+            param = slicer.util.getNode("Param_data")
+            param.GetParameterNames()
             self.escribe("directa", 1000)
                     
     def escribe(self, a, event):
         print("vino a rutina de escritura !!!!!!!!!!!!!!!!!!!!!!!!!")
         print("esto lo escribe la App lector de Parametros")
         print( type(a), event)
-        transfe = slicer.util.getNode("Transfe_data")
-        parametros = transfe.GetParameterNames()
+        param = slicer.util.getNode("Param_data")
+        parametros = param.GetParameterNames()
         self.textEdit_1.setPlainText("Parameters = " + str(parametros))
         self.textEdit_2.setPlainText("")
         
         for item in parametros:
-            texto = transfe.GetParameter(item)
+            texto = param.GetParameter(item)
             self.textEdit_2.append(item + " = " +texto)
 
 
