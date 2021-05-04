@@ -11,22 +11,16 @@ from __main__ import qt, ctk, slicer, vtk
 from slicer.ScriptedLoadableModule import *
 
 from Recursos import Maquina_Russell_Brown
-from Recursos import utilitarios as util
+from Recursos import utilitarios
 from Recursos import gestion_Fiduciarios 
 
 reload(Maquina_Russell_Brown)
-reload(util)
+reload(utilitarios)
 reload(gestion_Fiduciarios)
 
-# TODO revisar angulo alfa en cuadrante izquierdo
 
 class SlicerStereotaxiaLite(ScriptedLoadableModule):
-    """ Este modulo calcula en el mismo plano de un corte
-        tomografico, los 9 fiduciarios y el Target. 
-        Usa solamente las ecuaciones de Russel Brown para la 
-        determinacion 3D de un sistema de localizadores N 
-        de un marco Micromar
-    """
+    """Uses ScriptedLoadableModule base class"""
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
         self.parent.title = "SlicerStereotaxiaLite"
@@ -34,12 +28,18 @@ class SlicerStereotaxiaLite(ScriptedLoadableModule):
         self.parent.dependencies = []
         self.parent.contributors = ["Dr. Miguel Ibanez; Dr. Dante Lovey; Dr. Lucas Vera; Dra. Elena Zema; Dr. Jorge Beninca."]
         self.parent.helpText = "Esta es la Version 21.0315"
-        self.parent.acknowledgementText = " Este modulo fue desarrollado originalmente por Jorge A.Beninca, durante los meses de Enero a Julio 2015, en el dpto de Neurocirugia del Hospital de Ninos Dr. Orlando Alassia."
-
+        self.parent.acknowledgementText = " Este modulo calcula en el mismo plano de un corte tomografico, los 9 fiduciarios y el Target. Usa las ecuaciones de Russel Brown para la determinacion 3D de un sistema de localizadores N de un marco Estereotáxico Micromar"
 
 class SlicerStereotaxiaLiteWidget(ScriptedLoadableModuleWidget):
-    """Uses ScriptedLoadableModuleWidget base class, available
-    """
+    """Uses ScriptedLoadableModuleWidget base class"""    
+    def __init__(self, parent=None):
+        ScriptedLoadableModuleWidget.__init__(self, parent)
+        self.logica = registracionLogic()
+        self.utiles = utilitarios.util()
+        self.gest = gestion_Fiduciarios.gestion_Fiduciarios()
+        self.maqui = Maquina_Russell_Brown.calculus()
+        self.marco = Maquina_Russell_Brown.Marco_Micromar()
+ 
     def setup(self):
         ScriptedLoadableModuleWidget.setup(self)
         self.Registracion_Bton = ctk.ctkCollapsibleButton()
@@ -60,8 +60,6 @@ class SlicerStereotaxiaLiteWidget(ScriptedLoadableModuleWidget):
         self.Bton5 = qt.QPushButton("Guarda la Sesión")
         self.Bton6 = qt.QPushButton("Prueba ")
         
-        #self.linea = qt.QLine(0, 0, 100, 0)
-
         self.Lbl1 = qt.QLabel("")
         self.Lbl1.setAlignment(qt.Qt.AlignCenter)
         self.Lbl2 = qt.QLabel("")
@@ -98,8 +96,12 @@ class SlicerStereotaxiaLiteWidget(ScriptedLoadableModuleWidget):
         self.Bton4.clicked.connect(lambda: self.selectora_botones("Entry Point"))
         self.Bton5.clicked.connect(lambda: self.selectora_botones("Guarda"))
         self.Bton6.clicked.connect(lambda: self.selectora_botones("Pruebas"))
-                
-        
+
+        ############################  Manejo del widget #######################
+        self.logica.Establece_Escena()
+        self.logica.Inicializa_Escena() 
+        ############################  Manejo del widget #######################
+ 
     def limpia_widget(self):
         self.textEdit.setPlainText("")
 
@@ -118,45 +120,44 @@ class SlicerStereotaxiaLiteWidget(ScriptedLoadableModuleWidget):
         
     def selectora_botones(self, modo):
         self.limpia_widget()
-        registracionLogic().grafica_path(False)
-        util.cambia_window_level("Red", 100, 50)
+        self.logica.grafica_path(False)
+        self.utiles.cambia_window_level("Red", 100, 50)
             
         if modo == "Inicializa":
-            registracionLogic().Inicializa_Escena()  
+            self.logica.Inicializa_Escena()  
             pass
         elif modo == "Registracion":
-            nodo_volu = util.obtiene_nodo_de_widget("Red")
+            nodo_volu = self.utiles.obtiene_nodo_de_widget("Red")
             if nodo_volu == None:
                 texto = "ERROR: no hay volumenes cargados"
                 slicer.util.warningDisplay(texto, windowTitle="Error", parent=None, standardButtons=None)
                 return
-            
-            registracionLogic().Inicializa_Escena()
+            self.logica.Inicializa_Escena()
             param = slicer.util.getNode("Param_data")
             self.mixObservador_4 = slicer.util.VTKObservationMixin()
             self.mixObservador_4.addObserver(param, vtk.vtkCommand.AnyEvent, self.actualiza_widget)
-            registracionLogic().Obtiene_9_Fiduciarios_f()
+            self.logica.Obtiene_9_Fiduciarios_f()
         elif modo == "Entry Point":
-            registracionLogic().Obtiene_1_Fiduciario_Entry()
+            self.logica.Obtiene_1_Fiduciario_Entry()
         elif modo == "Target":
-            registracionLogic().Obtiene_1_Fiduciario_Target()
+            self.logica.Obtiene_1_Fiduciario_Target()
         elif modo == "Guarda":
-            registracionLogic().save()
+            self.logica.guarda()
         
-        elif modo == "Pruebas":
-            print("vino a prueba")
-            pass
-    
-    ###### comienza acción ##########
-    registracionLogic().Establece_Escena()
-    registracionLogic().Inicializa_Escena()  
-        
+        #elif modo == "Pruebas":
+        #    print("vino a prueba")
+        #    pass
 
+        
 class registracionLogic(ScriptedLoadableModuleLogic):
-    """Esta clase implemtenta todos los computos de registracion y calculo que requiere el modulo"""
+    """Esta clase implemtenta todos los computos de 
+    registracion y calculo que requiere el modulo"""
     def __init__(self):
+        self.utiles = utilitarios.util()
         self.gest = gestion_Fiduciarios.gestion_Fiduciarios()
-        self.maqui = Maquina_Russell_Brown
+        self.maqui = Maquina_Russell_Brown.calculus()
+        self.marco = Maquina_Russell_Brown.Marco_Micromar()
+ 
         self.modulo = slicer.util.modulePath("SlicerStereotaxiaLite")
         self.rootPath = slicer.mrmlScene.GetRootDirectory()
         self.moduloPath = os.path.split(self.modulo)[0]
@@ -171,8 +172,7 @@ class registracionLogic(ScriptedLoadableModuleLogic):
         print("modulo: ", self.modulo)
         print("modulo path:", self.moduloPath)
         print("escena en uso: ", self.escenaPath)
-        lay = slicer.app.layoutManager()
-        lay.setLayout(6)  # red panel
+        lay = slicer.app.layoutManager().setLayout(6)  # red panel
         
     def Inicializa_Escena(self):
         print("------------------------------------------------")
@@ -183,17 +183,16 @@ class registracionLogic(ScriptedLoadableModuleLogic):
         #print("El volumen con que se trabaja es = ", nodo_volu.GetName())
         #print("el origen del volumen es =")
         #print(nodo_volu.GetOrigin())
-        #util.modifica_origen_de_volumen(nodo_volu, [100,100,-100])
+        #self.utiles.modifica_origen_de_volumen(nodo_volu, [100,100,-100])
         
-        util.Genera_Nodo("vtkMRMLLinearTransformNode", "Transformada_Correctora_del_Volumen")
-        util.centra_nodo_de_widget("Red")
+        self.utiles.Genera_Nodo("vtkMRMLLinearTransformNode", "Transformada_Correctora_del_Volumen")
+        self.utiles.centra_nodo_de_widget("Red")
         
-        util.Borra_nodos_por_clase("vtkMRMLMarkupsFiducialNode")
-        util.Borra_nodos_por_clase("vtkMRMLMarkupsLineNode")
-        util.impri_layout_2D("Red", "", 0)
+        self.utiles.Borra_nodos_por_clase("vtkMRMLMarkupsFiducialNode")
+        self.utiles.Borra_nodos_por_clase("vtkMRMLMarkupsLineNode")
+        self.utiles.impri_layout_2D("Red", "", 0)
         
-        param = util.Genera_Nodo("vtkMRMLScriptedModuleNode", "Param_data")
-        #param.SetParameter("Fiduciarios_Marco", str(Maquina_Russell_Brown.Marco_Micromar.P[1:9]))  
+        param = self.utiles.Genera_Nodo("vtkMRMLScriptedModuleNode", "Param_data")
         param.SetParameter("Target", str([0.0, 0.0, 0.0]))
         param.SetParameter("T_Entry", str([0.0, 0.0, 0.0]))
         param.SetParameter("Registered_flag", "False")
@@ -201,10 +200,10 @@ class registracionLogic(ScriptedLoadableModuleLogic):
     
     def Obtiene_9_Fiduciarios_f(self):
         print("vino a marcacion de 9 fiduciarios")
-        nodo_volu = util.obtiene_nodo_de_widget("Red")
+        nodo_volu = self.utiles.obtiene_nodo_de_widget("Red")
         param = slicer.util.getNode("Param_data")
         param.SetParameter(" Nombre_del_Paciente", nodo_volu.GetName())
-        transformada = util.Genera_Nodo("vtkMRMLLinearTransformNode", "Transformada_Correctora_del_Volumen")
+        transformada = self.utiles.Genera_Nodo("vtkMRMLLinearTransformNode", "Transformada_Correctora_del_Volumen")
         nodo_volu.SetAndObserveTransformNodeID(transformada.GetID())
     
         self.gest.moduloPath = self.moduloPath  
@@ -263,14 +262,14 @@ class registracionLogic(ScriptedLoadableModuleLogic):
         self.mixObservador_1.removeObservers()      
         param = slicer.util.getNode("Param_data")
         #
-        #                       procedimiento de REGISTRACION
+        #     procedimiento de REGISTRACION
         #
         if self.gest.nombre_Nodo == "f":
             nodo_fidu = slicer.util.getNode(self.gest.nombre_Nodo)
             fiduciarios_TAC = self.gest.Lectura_Fiduciarios(nodo_fidu)
             matriz_RB = self.maqui.Ecuaciones_Russell_Brown(fiduciarios_TAC)
             array_M_RB = slicer.util.arrayFromVTKMatrix(matriz_RB).tolist()
-            fiduciarios_3D = Maquina_Russell_Brown.Multiplica_lista_de_puntos(fiduciarios_TAC, matriz_RB)
+            fiduciarios_3D = self.maqui.Multiplica_lista_de_puntos(fiduciarios_TAC, matriz_RB)
          
             matriz_4x4  = self.maqui.Analisis_por_ICP(fiduciarios_TAC, fiduciarios_3D)
             array_M_3D = slicer.util.arrayFromVTKMatrix(matriz_RB).tolist()
@@ -280,17 +279,17 @@ class registracionLogic(ScriptedLoadableModuleLogic):
 
             nodo = slicer.util.getNode("Transformada_Correctora_del_Volumen")
             nodo.SetAndObserveTransformToParent(transformada)
-            util.centra_nodo_de_widget("Red")
+            self.utiles.centra_nodo_de_widget("Red")
 
-            param.SetParameter("Fiduciarios_TAC", str(util.redondea_lista_de_puntos(fiduciarios_TAC, 2)))
+            param.SetParameter("Fiduciarios_TAC", str(self.utiles.redondea_lista_de_puntos(fiduciarios_TAC, 2)))
             param.SetParameter("Array_Matrix_RB", str(array_M_RB))
             param.SetParameter("Registered_flag", "True")
-            param.SetParameter("Fiduciarios_3D", str(util.redondea_lista_de_puntos(fiduciarios_3D, 2)))
+            param.SetParameter("Fiduciarios_3D", str(self.utiles.redondea_lista_de_puntos(fiduciarios_3D, 2)))
             param.SetParameter("Array_Matrix_3D", str(array_M_3D))
             param.SetParameter("Target", str([0.0, 0.0, 0.0]))
             param.SetParameter("T_Entry", str([0.0, 0.0, 0.0]))
-            param.SetParameter("Transformada_Position", str(util.redondea(transformada.GetPosition(), 2)))
-            param.SetParameter("Transformada_Orientation", str(util.redondea(transformada.GetOrientation(), 2)))
+            param.SetParameter("Transformada_Position", str(self.utiles.redondea(transformada.GetPosition(), 2)))
+            param.SetParameter("Transformada_Orientation", str(self.utiles.redondea(transformada.GetOrientation(), 2)))
 
             print("Fiduciarios_TAC = " + param.GetParameter("Fiduciarios_TAC"))
             print("Matrix_RB = ", matriz_RB)
@@ -302,12 +301,12 @@ class registracionLogic(ScriptedLoadableModuleLogic):
         elif self.gest.nombre_Nodo == "Target":   # procedimiento del Target
             nodo_fidu = slicer.util.getNode(self.gest.nombre_Nodo)
             Target = self.gest.Lectura_Fiduciarios(nodo_fidu)[0]  # toma el segundo termino
-            param.SetParameter("Target", str(util.redondea(Target, 1)))
+            param.SetParameter("Target", str(self.utiles.redondea(Target, 1)))
             self.grafica_path(True)
 
             texto = "Target = " + param.GetParameter("Target")
             nodo_fidu.SetNthMarkupLabel(0, texto)
-            util.impri_layout_2D("Red", texto, 2)
+            self.utiles.impri_layout_2D("Red", texto, 2)
         
             print()
             print("-------------------------------------------")
@@ -317,12 +316,12 @@ class registracionLogic(ScriptedLoadableModuleLogic):
         elif self.gest.nombre_Nodo == "Entry":   # procedimiento del Target
             nodo_fidu = slicer.util.getNode(self.gest.nombre_Nodo)
             Entry = self.gest.Lectura_Fiduciarios(nodo_fidu)[0]  # toma el segundo termino
-            param.SetParameter("T_Entry", str(util.redondea(Entry, 1)))
+            param.SetParameter("T_Entry", str(self.utiles.redondea(Entry, 1)))
             self.grafica_path(True)    
 
             texto = "Entry = " + param.GetParameter("T_Entry")
             nodo_fidu.SetNthMarkupLabel(0, texto)
-            util.impri_layout_2D("Red", texto, 7)
+            self.utiles.impri_layout_2D("Red", texto, 7)
             
             print()
             print("-------------------------------------------")
@@ -332,7 +331,7 @@ class registracionLogic(ScriptedLoadableModuleLogic):
     def grafica_path(self, modo):
         print("vino a grafica path")
         if modo == False:
-            util.Borra_nodo("Path")
+            self.utiles.Borra_nodo("Path")
             return
 
         param = slicer.util.getNode("Param_data")
@@ -347,8 +346,8 @@ class registracionLogic(ScriptedLoadableModuleLogic):
             texto = "ATENCION: el PATH atraviesa la línea media !  "
             slicer.util.warningDisplay(texto, windowTitle="Error", parent=None, standardButtons=None)
 
-        Alfa, Beta = util.calcula_angulos(Entry, Target)
-        largo_path = util.grafica_linea(Entry, Target)
+        Alfa, Beta = self.utiles.calcula_angulos(Entry, Target)
+        largo_path = self.utiles.grafica_linea(Entry, Target)
         
         param.SetParameter("Path_length", str(round(largo_path, 2)))
         param.SetParameter("Target_Angulo_Alfa", str(round(Alfa, 2)))
@@ -362,13 +361,13 @@ class registracionLogic(ScriptedLoadableModuleLogic):
         texto = "Alfa : " + param.GetParameter("Target_Angulo_Alfa")
         texto = texto + ",  Beta : "+ param.GetParameter("Target_Angulo_Beta") 
         texto = texto + ", long : " + param.GetParameter("Path_length")
-        util.impri_layout_2D("Red", texto, 3)
+        self.utiles.impri_layout_2D("Red", texto, 3)
 
         print("ángulo_Alfa = ", param.GetParameter("Target_Angulo_Alfa"), "grados.")  #plano lateral
         print("ángulo_Beta = ", param.GetParameter("Target_Angulo_Beta"), "grados.") # plano frotal 
         print("longitud del path = ", param.GetParameter("Path_length"), "mm.")
 
-    def save(self):
+    def guarda(self):
         print("vino a save")
         # Create a new directory where the scene will be saved into
         ref_time = time.strftime("%Y%m%d-%H%M%S")
@@ -397,3 +396,4 @@ class registracionLogic(ScriptedLoadableModuleLogic):
         # close the connection
         fp.close()
 
+    
