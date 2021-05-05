@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# SlicerStereotaxiaLite version 21.0504
+# SlicerStereotaxiaLite version 21.0422
 import os
 import logging
 import math
@@ -97,18 +97,47 @@ class SlicerStereotaxiaLiteWidget(ScriptedLoadableModuleWidget):
         self.Bton5.clicked.connect(lambda: self.selectora_botones("Guarda"))
         self.Bton6.clicked.connect(lambda: self.selectora_botones("Pruebas"))
 
-        ############################  Manejo del widget #######################
-        self.logica.Establece_Escena()
-        self.logica.Inicializa_Escena() 
-        ############################  Manejo del widget #######################
+        ######################  Incio de la actividad del widget ##############
+        self.selectora_botones("Inicializa")
+        #######################################################################
  
+    def selectora_botones(self, modo):
+        if modo == "Guarda":
+            self.logica.guarda()
+            return
+        else:    
+            nodo_volu = self.utiles.obtiene_nodo_de_widget("Red")
+            if nodo_volu == None:
+                texto = "ERROR: no hay volumenes cargados"
+                slicer.util.warningDisplay(texto, windowTitle="Error", parent=None, standardButtons=None)
+                return
+            self.limpia_widget()
+            self.logica.grafica_path(False)
+            self.utiles.cambia_window_level("Red", 100, 50)
+                
+        if modo == "Inicializa":
+            self.logica.Establece_Escena()
+            self.logica.Inicializa_Escena()  
+        elif modo == "Registracion":
+            self.logica.Inicializa_Escena()
+            param = slicer.util.getNode("Param_data")
+            self.mixObservador_4 = slicer.util.VTKObservationMixin()
+            self.mixObservador_4.addObserver(param, vtk.vtkCommand.AnyEvent, self.actualiza_widget)
+            self.logica.Obtiene_9_Fiduciarios_f()
+        elif modo == "Target":
+            self.logica.Obtiene_1_Fiduciario_Target()
+        elif modo == "Entry Point":
+            self.logica.Obtiene_1_Fiduciario_Entry()
+        elif modo == "Pruebas":
+            print("vino a Pruebas")
+            pass
+
     def limpia_widget(self):
         self.textEdit.setPlainText("")
 
     def actualiza_widget(self, param, event):
         print("vino al callback actualiza widget !!!!!!!!!!!")
         print(event)
-        #print(param.GetParameterNames())
         self.limpia_widget()
         if param.GetParameter("Registered_flag") != "True":
             return
@@ -118,35 +147,6 @@ class SlicerStereotaxiaLiteWidget(ScriptedLoadableModuleWidget):
         self.textEdit.append("angulo Alfa = " + param.GetParameter("Target_Angulo_Alfa") )
         self.textEdit.append("angulo Beta = " + param.GetParameter("Target_Angulo_Beta") )
         
-    def selectora_botones(self, modo):
-        self.limpia_widget()
-        self.logica.grafica_path(False)
-        self.utiles.cambia_window_level("Red", 100, 50)
-            
-        if modo == "Inicializa":
-            self.logica.Inicializa_Escena()  
-            pass
-        elif modo == "Registracion":
-            nodo_volu = self.utiles.obtiene_nodo_de_widget("Red")
-            if nodo_volu == None:
-                texto = "ERROR: no hay volumenes cargados"
-                slicer.util.warningDisplay(texto, windowTitle="Error", parent=None, standardButtons=None)
-                return
-            self.logica.Inicializa_Escena()
-            param = slicer.util.getNode("Param_data")
-            self.mixObservador_4 = slicer.util.VTKObservationMixin()
-            self.mixObservador_4.addObserver(param, vtk.vtkCommand.AnyEvent, self.actualiza_widget)
-            self.logica.Obtiene_9_Fiduciarios_f()
-        elif modo == "Entry Point":
-            self.logica.Obtiene_1_Fiduciario_Entry()
-        elif modo == "Target":
-            self.logica.Obtiene_1_Fiduciario_Target()
-        elif modo == "Guarda":
-            self.logica.guarda()
-        
-        #elif modo == "Pruebas":
-        #    print("vino a prueba")
-        #    pass
 
         
 class registracionLogic(ScriptedLoadableModuleLogic):
@@ -166,13 +166,13 @@ class registracionLogic(ScriptedLoadableModuleLogic):
 
     def Establece_Escena(self):
         print("------------------------------------------------")
-        print("            Abre una sesion")
+        print("            Abre una Escena")
         print("------------------------------------------------")
         print("root path: ", self.rootPath)
         print("modulo: ", self.modulo)
         print("modulo path:", self.moduloPath)
         print("escena en uso: ", self.escenaPath)
-        lay = slicer.app.layoutManager().setLayout(6)  # red panel
+        slicer.app.layoutManager().setLayout(6)  # red panel
         
     def Inicializa_Escena(self):
         print("------------------------------------------------")

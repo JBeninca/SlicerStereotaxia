@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# SlicerStereotaxia version 21.0504
+# SlicerStereotaxia version 21.0422
 import os
 import logging
 import math
@@ -62,7 +62,7 @@ class SlicerStereotaxiaWidget(ScriptedLoadableModuleWidget):
         self.Bton3.toolTip = "Marca el punto de Entrada.-"
         self.Bton4 = qt.QPushButton("Target")
         self.Bton4.toolTip = "Marca el fiduciario Target y realiza los calculos.-"
-        self.Bton5 = qt.QPushButton("Guarda")
+        self.Bton5 = qt.QPushButton("Guarda la sesion")
         self.Bton5.toolTip = "Guarda los datos y las imágenes.-"
         
         self.Bton9 = qt.QPushButton("Pruebas ")
@@ -191,7 +191,7 @@ class SlicerStereotaxiaWidget(ScriptedLoadableModuleWidget):
 
         Layout1 = qt.QGridLayout(self.Registracion_Bton)
         Layout1.addWidget(self.Lbl1, 0, 0)
-        Layout1.addWidget(self.Bton1, 1, 0)
+        #Layout1.addWidget(self.Bton1, 1, 0)
         Layout1.addWidget(self.Bton2, 2, 0)
         Layout1.addWidget(self.Bton3, 3, 0)
         Layout1.addWidget(self.Bton4, 4, 0)
@@ -222,7 +222,6 @@ class SlicerStereotaxiaWidget(ScriptedLoadableModuleWidget):
         self.Bton3.clicked.connect(lambda: self.selectora_botones("Entry"))
         self.Bton4.clicked.connect(lambda: self.selectora_botones("Target"))
         self.Bton5.clicked.connect(lambda: self.selectora_botones("Guarda"))
-
         self.Bton9.clicked.connect(lambda: self.selectora_botones("Pruebas"))
 
         self.Bton10.clicked.connect(lambda: self.visibilidad_modelos("toggle", "Volumen"))
@@ -246,9 +245,8 @@ class SlicerStereotaxiaWidget(ScriptedLoadableModuleWidget):
         self.dial_b.valueChanged.connect(self.onCambioDial)
         
         ############################  Manejo del widget #######################
-        self.logica.Establece_Escena()       #set observer de cambio del target
-        self.logica.Inicializa_Escena()
-        ######################################################################
+        self.selectora_botones("Inicializa")       
+        #######################################################################
        
     def colapso_Reg(self):
         print("se oprimio Registracion")
@@ -280,22 +278,29 @@ class SlicerStereotaxiaWidget(ScriptedLoadableModuleWidget):
             slicer.app.layoutManager().setLayout(4)  # 3d panel
             
     def selectora_botones(self, modo):
-        slicer.app.layoutManager().setLayout(6)  # RED panel
-        if modo == "Inicializa":
-            #slicer.mrmlScene.Clear(0)
-            registracionLogic().Inicializa_Escena()
-            self.Actualiza_elementos_del_Widget()
-            self.Establece_Isocentro_y_Arco()
-        elif modo == "Registracion":
-            print("vino a registracion ")
+        if modo == "Guarda":
+            self.logica.guarda()
+            return
+        else:
             nodo_volu = self.utiles.obtiene_nodo_de_widget("Red")
             if nodo_volu == None:
                 texto = "ERROR: no hay volumenes cargados"
                 slicer.util.warningDisplay(texto, windowTitle="Error", parent=None, standardButtons=None)
                 return
-            slicer.app.layoutManager().setLayout(6)  # RED panel
-            
+            self.utiles.cambia_window_level("Red", 100, 50)
+            #slicer.app.layoutManager().setLayout(6)  # RED panel
+        
+        if modo == "Inicializa":
+            #slicer.mrmlScene.Clear(0)
+            self.logica.Establece_Escena()
+            slicer.app.layoutManager().setLayout(4)  # 3D panel
             self.logica.Inicializa_Escena()
+            self.Actualiza_elementos_del_Widget()
+            self.Establece_Isocentro_y_Arco()
+        elif modo == "Registracion":
+            print("vino a registracion ")
+            self.logica.Inicializa_Escena()
+            slicer.app.layoutManager().setLayout(6)  # RED panel
             self.logica.Obtiene_9_Fiduciarios_f()
         
         elif modo == "Entry":
@@ -306,9 +311,6 @@ class SlicerStereotaxiaWidget(ScriptedLoadableModuleWidget):
             print("vino a Target ")
             slicer.app.layoutManager().setLayout(6)  # RED panel
             self.logica.Obtiene_1_Fiduciario_Target()
-        elif modo == "Guarda":
-            self.logica.guarda()
-        
         elif modo == "Pruebas":
             print("vino a Pruebas")
             pass    
@@ -479,17 +481,16 @@ class registracionLogic(ScriptedLoadableModuleLogic):
         print("    Inicializa  nodos en una Escena ya abierta  ")
         print("------------------------------------------------")
         
-        # centra el volumen y aproxima a zero
-        #print("El volumen con que se trabaja es = ", nodo_volu.GetName())
-        #print("el origen del volumen es =")
-        #print(nodo_volu.GetOrigin())
-        #self.utiles.modifica_origen_de_volumen(nodo_volu, [100,100,-100])
         nodo_transfo = self.utiles.Genera_Nodo("vtkMRMLLinearTransformNode", "Transformada_Correctora_del_Volumen")
         nodo_volu = self.utiles.obtiene_nodo_de_widget("Red")
         
         nodo_volu.SetAndObserveTransformNodeID(nodo_transfo.GetID())
+        # centra el volumen y aproxima a zero
+        print("El volumen con que se trabaja es = ", nodo_volu.GetName())
+        print("el origen del volumen es =")
+        print(nodo_volu.GetOrigin())
+        self.utiles.modifica_origen_de_volumen(nodo_volu, [100,100,-100])
         self.utiles.centra_nodo_de_widget("Red")
-
         print("Coloca volumen '", nodo_volu.GetName(), "' en transformada.-")
         self.utiles.Renderiza_3D_Volumen(nodo_volu)
         print("Se ha renderizado volumen:", nodo_volu.GetName())
