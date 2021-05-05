@@ -1,5 +1,5 @@
-# -*- coding: iso-8859-1 -*-
-# Maquina_Russell_Brown version: 17.0508
+# -*- coding: utf-8 -*-
+# Maquina_Russell_Brown version: 21.0504
 
 import numpy
 from __main__ import qt, ctk, slicer, vtk
@@ -44,6 +44,8 @@ class Marco_Micromar():
 
 
 class calculus():
+    def __init__():
+        pass
         
     def Ecuaciones_Russell_Brown(self, fiduciarios_2D):
         """Resolucion algebraica (matricial) con las ecuaciones de Russell Brown.
