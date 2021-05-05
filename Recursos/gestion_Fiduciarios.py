@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Estereotaxia_Simplex version 16.1206
+# Estereotaxia_Simplex version 21.0504
 # Clase gestion Fiduciarios
 from __main__ import slicer, vtk
 from Recursos import utilitarios 
