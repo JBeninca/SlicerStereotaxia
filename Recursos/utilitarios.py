@@ -1,5 +1,5 @@
-# -*- coding: iso-8859-1 -*-
-# Estereotaxia_Simplex version 16.1206
+# -*- coding: utf-8 -*-
+# Estereotaxia_Simplex version 21.0504
 
 import logging
 import os
