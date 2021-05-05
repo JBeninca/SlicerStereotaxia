@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# SlicerStereotaxia version 21.0422
+# SlicerStereotaxia version 21.0504
 import os
 import logging
 import math
