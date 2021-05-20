@@ -1,20 +1,15 @@
-# -*- coding: utf-8 -*-
-# Maquina_Russell_Brown version: 21.0504
+# -*- coding: iso-8859-1 -*-
+# Maquina_Russell_Brown version: 17.0508
 
 import numpy
-from __main__ import qt, ctk, slicer, vtk
+from __main__ import vtk
 
 
 """ Ecuaciones de Russell Brown para tansformacion en 3D
-    (not using vtk) -
-
      El objetivo de este modulo es obtener la matriz de R Brown
      que permite la registracion en coordenadas 3D de un
      marco estereotaxico (Micromar) de una imagen de TAC.
-
-     Luego se calcula un Target en 3D en este en el mismo plano
-     (en el mismo corte) en que se ha hecho la registracion.-
-     """
+"""
 
 class Marco_Micromar():
     """Clase para encapsular datos del marco MICROMAR TM-03B"""
@@ -44,7 +39,7 @@ class Marco_Micromar():
 
 
 class calculus():
-    def __init__():
+    def __init__(self):
         pass
         
     def Ecuaciones_Russell_Brown(self, fiduciarios_2D):

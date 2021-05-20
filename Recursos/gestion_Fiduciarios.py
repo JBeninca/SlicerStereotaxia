@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-# Estereotaxia_Simplex version 21.0504
+# Estereotaxia_Simplex version 16.1206
 # Clase gestion Fiduciarios
 from __main__ import slicer, vtk
 from Recursos import utilitarios 
 
 
-class gestion_Fiduciarios():
+class gestion():
     """ Esta clase maneja la entrada y lectura de los fiduciarios"""
     def __init__(self):
         self.utiles = utilitarios.util()
@@ -75,22 +75,6 @@ class gestion_Fiduciarios():
         nodo_interac = slicer.mrmlScene.GetNodeByID("vtkMRMLInteractionNodeSingleton")
         nodo_interac.SetPlaceModePersistence(activo)
         nodo_interac.SetCurrentInteractionMode(activo)
-
-    
-    """
-    def agregaObservador(self):
-        print("vino a agrega Scene observador")
-        for fiducialLista in slicer.util.getNodes('vtkMRMLMarkupsFiducialNode*').values():
-            tag = fiducialLista.AddObserver(fiducialLista.PointPositionDefinedEvent, self.onFiducialAgregado)
-            self.observadores_Tags.append((fiducialLista, tag))
-
-
-    def remueveObservador(self):
-            print("vino a remueve Scene observador")  
-            for obj, tag in self.observadores_Tags:
-                obj.RemoveObserver(tag)
-            self.observadores_Tags = []
-    """
 
     def Inicializa_nodo(self, nombre_Nodo):
         self.Borra_nodo(nombre_Nodo)  # intenta borrar nodo anterior
