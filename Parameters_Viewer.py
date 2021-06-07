@@ -68,8 +68,9 @@ class Parameters_ViewerWidget(ScriptedLoadableModuleWidget):
                 transfe = slicer.util.getNode("Param_data")
                 print("Ok, se ha cargado el nodo Param_data.-")
             except:
-                adv = ("No existe el nodo Param_data, del que se pueda leer.")
-                slicer.util.warningDisplay(adv, windowTitle="Error", parent=None, standardButtons=None)
+                self.utiles.Genera_Nodo("vtkMRMLScriptedModuleNode", "Param_data")
+                #adv = ("No existe el nodo Param_data, del que se pueda leer.")
+                #slicer.util.warningDisplay(adv, windowTitle="Error", parent=None, standardButtons=None)
                 return
             self.textEdit_1.setPlainText("")
             self.textEdit_2.setPlainText("")
