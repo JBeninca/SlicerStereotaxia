@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# SlicerStereotaxiaLite version 21.0520
+# StereotaxiaLite version 21.0520
 import os
 import logging
 import time
@@ -18,18 +18,18 @@ reload(utilitarios)
 reload(gestion_Fiduciarios)
 
 
-class SlicerStereotaxiaLite(ScriptedLoadableModule):
+class StereotaxiaLite(ScriptedLoadableModule):
     """Uses ScriptedLoadableModule base class"""
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = "SlicerStereotaxiaLite"
+        self.parent.title = "StereotaxiaLite"
         self.parent.categories = ["Stereotaxia"]
         self.parent.dependencies = []
         self.parent.contributors = ["Dr. Miguel Ibanez; Dr. Dante Lovey; Dr. Lucas Vera; Dra. Elena Zema; Dr. Jorge Beninca."]
         self.parent.helpText = "Esta es la Version 21.0315"
         self.parent.acknowledgementText = " Este modulo calcula en el mismo plano de un corte tomografico, los 9 fiduciarios y el Target. Usa las ecuaciones de Russel Brown para la determinacion 3D de un sistema de localizadores N de un marco Estereotáxico Micromar"
 
-class SlicerStereotaxiaLiteWidget(ScriptedLoadableModuleWidget):
+class StereotaxiaLiteWidget(ScriptedLoadableModuleWidget):
     """Uses ScriptedLoadableModuleWidget base class"""    
     def __init__(self, parent=None):
         ScriptedLoadableModuleWidget.__init__(self, parent)
@@ -118,9 +118,9 @@ class SlicerStereotaxiaLiteWidget(ScriptedLoadableModuleWidget):
             self.logica.Establece_Escena()
             
             ####
-            #modulo = slicer.util.modulePath("SlicerStereotaxiaLite")
+            #modulo = slicer.util.modulePath("Stereotaxia")
             #moduloPath = os.path.split(modulo)[0]
-            #slicer.util.loadVolume(moduloPath + "/Paciente.nrrd")
+            #slicer.util.loadVolume(moduloPath + "/../CTHeadFrame.nrrd")
             ####
             
             self.logica.Inicializa_Escena()  
@@ -190,11 +190,11 @@ class registracionLogic(ScriptedLoadableModuleLogic):
         self.gest = gestion_Fiduciarios.gestion()
         self.maqui = Maquina_Russell_Brown.calculus()
          
-        self.modulo = slicer.util.modulePath("SlicerStereotaxiaLite")
+        self.modulo = slicer.util.modulePath("Stereotaxia")
         self.rootPath = slicer.mrmlScene.GetRootDirectory()
         self.moduloPath = os.path.split(self.modulo)[0]
         self.archivoPath = self.moduloPath + "/Archivo"
-        self.escenaPath = self.moduloPath + "/Espacio_Marco/_Marco_Scene.mrml"
+        self.escenaPath = self.moduloPath + "/Resources/Espacio_Marco/_Marco_Scene.mrml"
 
     def Establece_Escena(self):
         print("------------------------------------------------")
