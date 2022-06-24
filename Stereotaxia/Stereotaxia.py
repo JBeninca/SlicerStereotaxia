@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# SlicerStereotaxia version 21.0520
+# Stereotaxia version 21.0520
 import os
 import logging
 import math
@@ -19,19 +19,45 @@ reload(utilitarios)
 reload(gestion_Fiduciarios)
 
 
-class SlicerStereotaxia(ScriptedLoadableModule):
+class Stereotaxia(ScriptedLoadableModule):
     """Uses ScriptedLoadableModule base class"""
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = "SlicerStereotaxia"
+        self.parent.title = "Stereotaxia"
         self.parent.categories = ["Stereotaxia"]
         self.parent.dependencies = []
         self.parent.contributors = ["Dr. Miguel Ibanez; Dr. Dante Lovey; Dr. Lucas Vera; Dra. Elena Zema; Dr. Jorge Beninca."]
         self.parent.helpText = "Esta es la Version 21.0203"
         self.parent.acknowledgementText = " Este modulo fue desarrollado originalmente por Jorge A.Beninca, durante los meses de Enero a Julio 2015, en el dpto de Neurocirugia del Hospital de Ninos Dr. Orlando Alassia."
 
-class SlicerStereotaxiaWidget(ScriptedLoadableModuleWidget):
+        # Additional initialization step after application startup is complete
+        slicer.app.connect("startupCompleted()", registerSampleData)
+
+#
+# Register sample data sets in Sample Data module
+#
+
+def registerSampleData():
+    """
+    Add data sets to Sample Data module.
+    """
+
+    import SampleData
+    iconsPath = os.path.join(os.path.dirname(__file__), 'Resources/Icons')
+
+    SampleData.SampleDataLogic.registerCustomSampleDataSource(
+        category="Stereotaxia",
+        sampleName='CTHeadFrame',
+        uris='https://github.com/JBeninca/SlicerStereotaxia/raw/main/CTHeadFrame.nrrd',
+        fileNames='CTHeadFrame.nrrd',
+        nodeNames='CTHeadFrame',
+        thumbnailFileName=os.path.join(iconsPath, 'CTHeadFrame.png'),
+        loadFileType='VolumeFile',
+        checksums='SHA256:e5fcccd5cd476d24a07c7303c61eeaefe9cf253d3798235a274877b4c2b873bb'
+        )
+
+class StereotaxiaWidget(ScriptedLoadableModuleWidget):
     """Uses ScriptedLoadableModuleWidget base class"""
     def __init__(self, parent=None):
         ScriptedLoadableModuleWidget.__init__(self, parent)
@@ -297,9 +323,9 @@ class SlicerStereotaxiaWidget(ScriptedLoadableModuleWidget):
             self.logica.Establece_Escena()
             
             ####
-            #modulo = slicer.util.modulePath("SlicerStereotaxia")
+            #modulo = slicer.util.modulePath("Stereotaxia")
             #moduloPath = os.path.split(modulo)[0]
-            #slicer.util.loadVolume(moduloPath + "/Paciente.nrrd")
+            #slicer.util.loadVolume(moduloPath + "/../CTHeadFrame.nrrd")
             ####
         
             self.logica.Inicializa_Escena()
@@ -500,11 +526,11 @@ class registracionLogic(ScriptedLoadableModuleLogic):
         self.maqui = Maquina_Russell_Brown.calculus()
         self.marco = Maquina_Russell_Brown.Marco_Micromar()
 
-        self.modulo = slicer.util.modulePath("SlicerStereotaxia")
+        self.modulo = slicer.util.modulePath("Stereotaxia")
         self.rootPath = slicer.mrmlScene.GetRootDirectory()
         self.moduloPath = os.path.split(self.modulo)[0]
         self.archivoPath = self.moduloPath + "/Archivo"
-        self.escenaPath = self.moduloPath + "/Espacio_Marco/_Marco_Scene.mrml"
+        self.escenaPath = self.moduloPath + "/Resources/Espacio_Marco/_Marco_Scene.mrml"
        
     def Establece_Escena(self):
         print("------------------------------------------------")

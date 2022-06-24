@@ -1,0 +1,18 @@
+Aguja_de_Puncion.vtk
+Arco.vtk
+content.txt
+CoordinateModel.vtk
+CT-AAA.vp
+CT-Muscle.vp
+Displacement to color.txt
+Fantasma_Modelo.vtk
+Master Scene View.png
+N_Locators.vtk
+Transformada_angulo_Alfa.h5
+Transformada_angulo_Beta.h5
+Transformada_Arruinadora.h5
+Transformada_Correctora_del_Volumen.h5
+Transformada_Der_Izq.h5
+Transformada_Isocentro.h5
+_Marco_Scene.mrml
+_Marco_Scene.png

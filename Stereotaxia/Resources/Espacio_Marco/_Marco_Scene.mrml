@@ -29,8 +29,6 @@
   id="vtkMRMLClipModelsNodevtkMRMLClipModelsNode" name="ClipModels" hideFromEditors="true" selectable="true" selected="false" singletonTag="vtkMRMLClipModelsNode" clipType="0" redSliceClipState="0" yellowSliceClipState="0" greenSliceClipState="0" ></ClipModels>
  <ScriptedModule
   id="vtkMRMLScriptedModuleNodeDataProbe" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" singletonTag="DataProbe" ></ScriptedModule>
- <ChartView
-  id="vtkMRMLChartViewNodeChartView1" name="ChartView1" hideFromEditors="false" selectable="true" selected="false" singletonTag="ChartView1" attributes="MappedInLayout:0" layoutLabel="1" layoutName="ChartView1" active="false" visibility="true" backgroundColor="0 0 0" backgroundColor2="0 0 0" layoutColor="0.454902 0.513725 0.913725" rulerColor="white" AxisLabels="L;R;P;A;I;S" ></ChartView>
  <ScriptedModule
   id="vtkMRMLScriptedModuleNodeMi_9" name="Mi_9" hideFromEditors="true" selectable="true" selected="false" singletonTag="Mi_9" ></ScriptedModule>
  <ScriptedModule
@@ -188,8 +186,6 @@
  id="vtkMRMLClipModelsNodevtkMRMLClipModelsNode" name="ClipModels" hideFromEditors="true" selectable="true" selected="false" singletonTag="vtkMRMLClipModelsNode" clipType="0" redSliceClipState="0" yellowSliceClipState="0" greenSliceClipState="0"  ></ClipModels>
   <ScriptedModule
  id="vtkMRMLScriptedModuleNodeDataProbe" name="ScriptedModule" hideFromEditors="true" selectable="true" selected="false" singletonTag="DataProbe"  ></ScriptedModule>
-  <ChartView
- id="vtkMRMLChartViewNodeChartView1" name="ChartView1" hideFromEditors="false" selectable="true" selected="false" singletonTag="ChartView1" attributes="MappedInLayout:0" layoutLabel="1" layoutName="ChartView1" active="false" visibility="true" backgroundColor="0 0 0" backgroundColor2="0 0 0" layoutColor="0.454902 0.513725 0.913725" rulerColor="white" AxisLabels="L;R;P;A;I;S"  ></ChartView>
   <Camera
  id="vtkMRMLCameraNode3" name="Default Scene Camera" hideFromEditors="false" selectable="true" selected="false" userTags="" position="349.456 886.352 191.49" focalPoint="32.8559 10.4349 102.786" viewUp="0.0106018 -0.104542 0.994464" parallelProjection="false" parallelScale="1" viewAngle="30" appliedTransform="1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1"  ></Camera>
   <SubjectHierarchy
