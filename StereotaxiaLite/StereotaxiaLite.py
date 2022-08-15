@@ -127,7 +127,8 @@ class StereotaxiaLiteWidget(ScriptedLoadableModuleWidget):
 
         elif modo == "DICOM":
             print("carga DICOM")
-            pass
+            slicer.util.selectModule("DICOM")
+            
         
         elif modo == "NLocadores":
             print(self.Bton7.text)
