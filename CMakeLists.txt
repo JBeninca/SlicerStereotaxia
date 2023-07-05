@@ -9,7 +9,7 @@ set(EXTENSION_CATEGORY "IGT")
 set(EXTENSION_CONTRIBUTORS "Dr. Miguel Ibanez, Dr. Dante Lovey, Dr. Lucas Vera, Dr. Elena Zema, Dr. Jorge Beninca, Marc Jermann (FHNW (CH)), Dr. Dorian Vogel (FHNW (CH), LiU (SE))")
 set(EXTENSION_DESCRIPTION "Compute stereotactic frame coordinates for neurosurgery planning.")
 set(EXTENSION_ICONURL "https://github.com/JBeninca/SlicerStereotaxia/raw/main/Stereotaxia.png")
-set(EXTENSION_SCREENSHOTURLS "https://github.com/JBeninca/SlicerStereotaxia/raw/main/Screenshot.jpg https://github.com/JBeninca/SlicerStereotaxia/raw/main/ScreenshotRegistration.jpg")
+set(EXTENSION_SCREENSHOTURLS "https://github.com/JBeninca/SlicerStereotaxia/raw/main/Screenshot.jpg https://github.com/JBeninca/SlicerStereotaxia/raw/main/resources/Images/Screenshot_02_StereotacticTrajectories.png")
 set(EXTENSION_DEPENDS "NA") # Specified as a list or "NA" if no dependencies
 
 #-----------------------------------------------------------------------------
