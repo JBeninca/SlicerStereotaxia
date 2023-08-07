@@ -1,5 +1,5 @@
 #-----------------------------------------------------------------------------
-set(MODULE_NAME probeView_SLICERSTEREOTACTIC)
+set(MODULE_NAME probeView)
 
 #-----------------------------------------------------------------------------
 set(MODULE_PYTHON_SCRIPTS
