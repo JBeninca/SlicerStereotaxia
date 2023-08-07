@@ -24,7 +24,6 @@ add_subdirectory(StereotaxiaLite)
 add_subdirectory(find_zFrame)
 add_subdirectory(stereo_points)
 add_subdirectory(probeView)
-## NEXT_MODULE
 
 #-----------------------------------------------------------------------------
 include(${Slicer_EXTENSION_GENERATE_CONFIG})
