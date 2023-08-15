@@ -1,5 +1,5 @@
 #-----------------------------------------------------------------------------
-set(MODULE_NAME find_zFrame_SLICERSTEREOTACTIC)
+set(MODULE_NAME find_zFrame)
 
 #-----------------------------------------------------------------------------
 set(MODULE_PYTHON_SCRIPTS

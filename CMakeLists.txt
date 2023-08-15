@@ -21,10 +21,9 @@ include(${Slicer_USE_FILE})
 # Extension modules
 add_subdirectory(Stereotaxia)
 add_subdirectory(StereotaxiaLite)
-add_subdirectory(find_zFrame_SlicerStereotactic)
-add_subdirectory(stereo_points_SlicerStereotactic)
-add_subdirectory(probeView_SlicerStereotactic)
-## NEXT_MODULE
+add_subdirectory(find_zFrame)
+add_subdirectory(stereo_points)
+add_subdirectory(probeView)
 
 #-----------------------------------------------------------------------------
 include(${Slicer_EXTENSION_GENERATE_CONFIG})

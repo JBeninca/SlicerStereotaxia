@@ -1,5 +1,5 @@
 #-----------------------------------------------------------------------------
-set(MODULE_NAME stereo_points_SLICERSTEREOTACTIC)
+set(MODULE_NAME stereo_points)
 
 #-----------------------------------------------------------------------------
 set(MODULE_PYTHON_SCRIPTS
