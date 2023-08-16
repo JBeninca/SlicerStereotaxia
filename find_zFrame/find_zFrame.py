@@ -340,7 +340,7 @@ class find_zFrameWidget(ScriptedLoadableModuleWidget):
         self.logic.run_zFrameRegistration(self.movingZselector.currentNode(),
                                           self.fixedZselector.currentNode(),
                                           self.outputTransformSelector.currentNode())
-        slicer.util.loadTransform(os.path.join(os.path.split(__file__)[0], 'Ressources/Leksell_Frame/leksell2RAS.h5'))
+        slicer.util.loadTransform(os.path.join(os.path.split(__file__)[0], 'Resources/Leksell_Frame/leksell2RAS.h5'))
     
     #########################################################################################################
 
@@ -401,7 +401,7 @@ class find_zFrameLogic(ScriptedLoadableModuleLogic):
         logging.info('Fiducial segmentation started')
 
         # Compute the thresholded output volume using the Threshold Scalar Volume CLI module
-        from Ressources.segmentZframe import segment_zFrame_slicer
+        from Resources.segmentZframe import segment_zFrame_slicer
         segment_zFrame_slicer(inputVolume, outputVolume, imgType)
         
         # create a segmentation to show the frame in 3d
@@ -453,7 +453,7 @@ class find_zFrameLogic(ScriptedLoadableModuleLogic):
         logging.info('Ideal frame generation started')
         
         import vtk, os
-        fileNames = [os.path.join(os.path.split(__file__)[0], 'Ressources/Leksell_Frame/ZFrame_'+i+'.stl') for i in fiducialList]
+        fileNames = [os.path.join(os.path.split(__file__)[0], 'Resources/Leksell_Frame/ZFrame_'+i+'.stl') for i in fiducialList]
         readers = [vtk.vtkSTLReader() for i in fileNames]
         appender = vtk.vtkAppendPolyData()
         for (thisReader,thisFile) in zip(readers, fileNames):
