@@ -108,7 +108,12 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
 
         self.nameField = qt.QLineEdit()
         self.nameField.setPlaceholderText('Add new point')
-        self.NewPointGLay.addWidget(self.nameField, 0, 0, 2, 1)
+        self.NewPointGLay.addWidget(self.nameField, 0, 0)
+
+        self.paralellTraj = qt.QComboBox()
+        self.paralellTraj.addItems(["Central", "Anterior", "Posterior", "Left", "Right"])
+        self.NewPointGLay.addWidget(self.paralellTraj, 1,0)
+
 
         self.xLabel = qt.QLabel('X')
         self.xLabel.setAlignment(qt.Qt.AlignRight | qt.Qt.AlignVCenter)
@@ -262,12 +267,12 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         self.table2ControlPoint(coordTable, self.fiducialGroup_selectionCombo.currentNode())
 
         self.nameField.setText('')
-        self.xField.setValue(0.0)
-        self.yField.setValue(0.0)
-        self.zField.setValue(0.0)
-        self.ringField.setValue(0.0)
-        self.arcField.setValue(0.0)
-        self.depthField.setValue(0.0)
+        # self.xField.setValue(0.0)
+        # self.yField.setValue(0.0)
+        # self.zField.setValue(0.0)
+        # self.ringField.setValue(0.0)
+        # self.arcField.setValue(0.0)
+        # self.depthField.setValue(0.0)
         print('==============================================================')
 
     def GetXYZcoordFromStereoSetings(self, x, y, z, r, a, d):
@@ -301,12 +306,6 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
                                     [0, 0, 0, 1]
                                     ])
 
-        # print('ring: %s'%str(ringTrans))
-        # print('arc: %s'%str(arcTrans))
-        # print('transl: %s'%str(carthesianTrans))
-
-        # trajTrans = np.dot(ringTrans, arcTrans)
-
         # in the source reference space:
         # x is positive from th target onwards (minus is before the target)
         # y is positive to the left
@@ -317,9 +316,23 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         # posterior:                    [0,0,-2]
         # left lateral, right medial:   [0,2,0]
         # left medial, right lateral:   [0,-2,0]
-        trajTrans = carthesianTrans @ ringTrans @ arcTrans
+        # for inserting paralell trajectories, the upper transform needs to be added at the end of trajTransform
+        # ex for posterior: trajTrans = carthesianTrans @ ringTrans @ arcTrans @ [[1,0,0,0], [0,1,0,0], [0,0,1,-2], [0,0,0,1]]
+        
+        trajModifier = {
+            "Central":   [[1,0,0,0], [0,1,0,0] , [0,0,1,0] , [0,0,0,1]],
+            "Anterior":  [[1,0,0,0], [0,1,0,0] , [0,0,1,2] , [0,0,0,1]],
+            "Posterior": [[1,0,0,0], [0,1,0,0] , [0,0,1,-2], [0,0,0,1]],
+            "Left":      [[1,0,0,0], [0,1,0,2] , [0,0,1,0] , [0,0,0,1]],
+            "Right":     [[1,0,0,0], [0,1,0,-2], [0,0,1,0] , [0,0,0,1]]
+            }[self.paralellTraj.currentText]
+
+
+
+        trajTrans = carthesianTrans @ ringTrans @ arcTrans @ trajModifier
         print("=============== trajectory transform ===============")
-        print(trajTrans)
+        print("Central:")
+        print(trajTrans)        
 
         return trajTrans
 
