@@ -262,6 +262,8 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         self.addPointFromStereoSetting(coordTable,
                                        self.xField.value, self.yField.value, self.zField.value,
                                        self.ringField.value, self.arcField.value, self.depthField.value,
+                                       slicer.mrmlScene.GetNodeByID(self.fiducialGroup_selectionCombo.currentNodeID).GetName() + 
+                                       "_" + 
                                        self.nameField.text
                                        )
         self.table2ControlPoint(coordTable, self.fiducialGroup_selectionCombo.currentNode())
