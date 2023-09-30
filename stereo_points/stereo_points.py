@@ -177,25 +177,17 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
 
         self.addBtn.connect('clicked(bool)', self.onAddBtnClicked)
 
-        self.fiducialNodesToCoordTables_id_tuples = list()
-
     ###################################################################################################
     # connections
 
     #########################################################################################################
     def onReferenceImageSelectedChanged(self, newNode):
-        # coordTable = slicer.mrmlScene.GetNodesByName(self.fiducialGroup_selectionCombo.currentNode().GetName() + "_coordsConversion").GetItemAsObject(0)
-        coordTable = slicer.mrmlScene.GetNodeByID(
-            self.findMatchingNodeInIdTupleList(self.fiducialNodesToCoordTables_id_tuples,
-                                               self.fiducialGroup_selectionCombo.currentNode().GetID()))
+        coordTable = slicer.mrmlScene.GetNodeByID(self.fiducialGroup_selectionCombo.currentNode().GetNodeReferenceID("vtkMRMLTableNode"))
         self.updatePointsCoordsFromXYZ(coordTable, newNode, self.frameTransform_selectionCombo.currentNode())
         self.disorient_btn.setText('Disorient "' + newNode.GetName() + '"')
 
     def onFrameTransformSelectedChanged(self, newNode):
-        # coordTable = slicer.mrmlScene.GetNodesByName(self.fiducialGroup_selectionCombo.currentNode().GetName() + "_coordsConversion").GetItemAsObject(0)
-        coordTable = slicer.mrmlScene.GetNodeByID(
-            self.findMatchingNodeInIdTupleList(self.fiducialNodesToCoordTables_id_tuples,
-                                               self.fiducialGroup_selectionCombo.currentNode().GetID()))
+        coordTable = slicer.mrmlScene.GetNodeByID(self.fiducialGroup_selectionCombo.currentNode().GetNodeReferenceID("vtkMRMLTableNode"))
         self.updatePointsCoordsFromXYZ(coordTable, self.referenceImage_selectionCombo.currentNode(), newNode)
 
     def onControlPointSelectedChanged(self, newNode):
@@ -216,8 +208,9 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
                 c.SetName(col)
 
             slicer.mrmlScene.AddNode(coordTable)
-            # keep a map of the fiducialNode <-> TableNode couples
-            self.fiducialNodesToCoordTables_id_tuples.append((newNode.GetID(), coordTable.GetID()))
+            # refererence the line from the table so we can get back to it
+            coordTable.AddNodeReferenceID("vtkMRMLMarkupsLineNode", newNode.GetID())
+            newNode.AddNodeReferenceID("vtkMRMLTableNode", coordTable.GetID())
             # add an observer for both nodes, whenever one is renamed, the other one is renamed as well
             coordTable.AddObserver(vtk.vtkCommand.ModifiedEvent, self.onCoordTableModified)
             newNode.AddObserver(vtk.vtkCommand.ModifiedEvent, self.onControlPointNodeModified)
@@ -234,28 +227,18 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         self.placeWidget.setCurrentNode(self.fiducialGroup_selectionCombo.currentNode())
 
     def onCoordTableModified(self, updatedNode, eventType):
-        matchingControlPoint_nodeID = self.findMatchingNodeInIdTupleList(self.fiducialNodesToCoordTables_id_tuples,
-                                                                         updatedNode.GetID())
-        fiducialNode = slicer.mrmlScene.GetNodeByID(matchingControlPoint_nodeID)
+        fiducialNode = slicer.mrmlScene.GetNodeByID(updatedNode.GetNodeReferenceID("vtkMRMLMarkupsLineNode"))
         fiducialNode.SetName(updatedNode.GetName().replace('_coordsConversion', ''))
 
     def onControlPointNodeModified(self, updatedNode, eventType):
         logging.debug("enter onControlPointNodeModified")
-        matchingCoordTable_nodeID = self.findMatchingNodeInIdTupleList(self.fiducialNodesToCoordTables_id_tuples,
-                                                                       updatedNode.GetID())
-        coordTable = slicer.mrmlScene.GetNodeByID(matchingCoordTable_nodeID)
+        coordTable = slicer.mrmlScene.GetNodeByID(updatedNode.GetNodeReferenceID("vtkMRMLTableNode"))
         coordTable.SetName(updatedNode.GetName() + '_coordsConversion')
         self.updatePointsAfterMove(coordTable, updatedNode)
 
-    def findMatchingNodeInIdTupleList(self, tupleList, search):
-        # print('looking for '+str(search)+ ' in '+str(tupleList))
-        return [j for j in [i for i in tupleList if search in i][0] if j != search][0]
-
     def onAddBtnClicked(self):
+        coordTable = slicer.mrmlScene.GetNodeByID(self.fiducialGroup_selectionCombo.currentNode().GetNodeReferenceID("vtkMRMLTableNode"))
 
-        coordTable = slicer.mrmlScene.GetNodeByID(
-            self.findMatchingNodeInIdTupleList(self.fiducialNodesToCoordTables_id_tuples,
-                                               self.fiducialGroup_selectionCombo.currentNode().GetID()))
         # print('[onAddBtnClicked] x: %f | y: %f | z: %f | r: %f | a: %f'%(
         # self.xField.value, self.yField.value, self.zField.value,
         # self.ringField.value, self.arcField.value))
@@ -346,10 +329,7 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         refImg_itk.SetOrigin([0, 0, 0])
         siu.PushVolumeToSlicer(refImg_itk,
                                name=self.referenceImage_selectionCombo.currentNode().GetName() + '_noOrient')
-
-        coordTable = slicer.mrmlScene.GetNodeByID(
-            self.findMatchingNodeInIdTupleList(self.fiducialNodesToCoordTables_id_tuples,
-                                               self.fiducialGroup_selectionCombo.currentNode().GetID()))
+        coordTable = slicer.mrmlScene.GetNodeByID(self.fiducialGroup_selectionCombo.currentNode().GetNodeReferenceID("vtkMRMLTableNode"))
 
         # clone the table node
         newTable = slicer.vtkMRMLTableNode()
