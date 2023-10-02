@@ -59,3 +59,4 @@ target/
 # Ignore all back-up files...
 *~
 *.bak
+.DS_Store
