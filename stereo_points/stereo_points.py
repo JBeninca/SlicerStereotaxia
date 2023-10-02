@@ -263,8 +263,7 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
     def GetXYZcoordFromStereoSetings(self, x, y, z, r, a, d):
         import numpy as np
         # print('[GetXYZcoordFromStereoSetings] x: %f | y: %f | z: %f | r: %f | a: %f'%(x,y,z,r,a))
-        coord = np.dot(self.GetTrajectoryTransform(x, y, z, r, a)
-                       , np.array([d, 0, 0, 1]))
+        coord = self.GetTrajectoryTransform(x, y, z, r, a) @ np.array([d, 0, 0, 1])
         # print("result: %s"%str(coord))
         return coord.tolist()
 
@@ -272,17 +271,17 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         import numpy as np
         # print('[GetTrajectoryTransform] x: %f | y: %f | z: %f | r: %f | a: %f'%(x,y,z,r,a))
         r = (-r) * (np.pi / 180)
-        ringTrans = np.array([[1, 0, 0, 0],
+        ringTrans = np.array([[1, 0        , 0         , 0],
                               [0, np.cos(r), -np.sin(r), 0],
-                              [0, np.sin(r), np.cos(r), 0],
-                              [0, 0, 0, 1]
+                              [0, np.sin(r), np.cos(r) , 0],
+                              [0, 0        , 0         , 1]
                               ])
 
         a = (-a) * (np.pi / 180)
         arcTrans = np.array([[np.cos(a), -np.sin(a), 0, 0],
-                             [np.sin(a), np.cos(a), 0, 0],
-                             [0, 0, 1, 0],
-                             [0, 0, 0, 1]
+                             [np.sin(a), np.cos(a) , 0, 0],
+                             [0        , 0         , 1, 0],
+                             [0        , 0         , 0, 1]
                              ])
 
         carthesianTrans = np.array([[1, 0, 0, x],
