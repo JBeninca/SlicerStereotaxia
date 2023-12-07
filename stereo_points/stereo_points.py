@@ -252,12 +252,6 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         self.table2ControlPoint(coordTable, self.fiducialGroup_selectionCombo.currentNode())
 
         self.nameField.setText('')
-        # self.xField.setValue(0.0)
-        # self.yField.setValue(0.0)
-        # self.zField.setValue(0.0)
-        # self.ringField.setValue(0.0)
-        # self.arcField.setValue(0.0)
-        # self.depthField.setValue(0.0)
         print('==============================================================')
 
     def GetXYZcoordFromStereoSetings(self, x, y, z, r, a, d):
@@ -406,25 +400,16 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         # GET XYZ Positions of all points
         for iControlPoint in range(fiducialNode.GetNumberOfControlPoints()):
             ras = [0, 0, 0]
-            # logging.debug("Variable: ras= %s", ras)
             fiducialNode.GetNthControlPointPosition(iControlPoint, ras)
             RASList.append(ras)
-            # logging.debug("Variable: ras= %s", ras)
-
+            
             # Transform RAS to XYZ
             [X, Y, Z] = self.RAStoXYZ(ras)
             XYZList.append([X, Y, Z])
-            # xyz = [X, Y, Z]
-            # logging.debug("Variable: XYZ= %s", xyz)
-            # test on running system if old and recalc RAS are the same
-            # [R, A, S] = self.XYZtoRAS(xyz)
-            # ras = [R,A,S]
-            # logging.debug("Variable: recalc RAS= %s", ras)
-        # logging.debug('Variable: XYZList = %s', XYZList)
 
         # XYZList needs two entries
         if len(XYZList) > 1:
-            # trasform XYZ to xyzrad from both points
+            # transform XYZ to xyzrad from both points
             xyzradList = self.XYZ2Leksell(XYZList)
             # logging.debug("Variable: xyzrad : %s", xyzradList)
 
@@ -444,12 +429,6 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
                 [X, Y, Z] = XYZList[irow]
                 [R, A, S] = RASList[irow]
                 [i, j, k] = self.RASpatToIJK(self.RAStoRASpat([R, A, S]))
-
-                # logging.debug("Variable labels:\t%s", labels[irow])
-                # logging.debug("Variable xyzrad:\t%s", xyzradList[irow])
-                # logging.debug("Variable XYZ:\t%s", XYZList[irow])
-                # logging.debug("Variable RAS:\t%s", RASList[irow])
-                # logging.debug("Variable ijk:\t%s", [i, j, k])
 
                 # Refill Table
                 row = tableNode.AddEmptyRow()
@@ -490,11 +469,6 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
                 [R, A, S] = RASList[irow]
                 [i, j, k] = self.RASpatToIJK(self.RAStoRASpat([R, A, S]))
 
-                # logging.debug("Variable labels:\t%s", labels[irow])
-                # logging.debug("Variable XYZ:\t%s", XYZList[irow])
-                # logging.debug("Variable RAS:\t%s", RASList[irow])
-                # logging.debug("Variable ijk:\t%s", [i, j, k])
-
                 # Refill Table
                 row = tableNode.AddEmptyRow()
                 tableNode.SetCellText(row, tableNode.GetColumnIndex('Marker'), label)
@@ -527,7 +501,6 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
 
         # Calculate the length of the vector
         distance = np.linalg.norm(vector)
-        # distance = (vector[0] ** 2 + vector[1] ** 2 + vector[2] ** 2) ** 0.5
 
         # Calculate the arc and ring of the vector
         # angle between the negative X-axis and the vector
@@ -543,9 +516,6 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         else:
             ring = 180 - ring
 
-        # logging.debug(f"Ring: {ring:.2f} degrees")
-        # logging.debug(f"Arc: {arc:.2f} degrees")
-        # logging.debug(f"Depth: {distance:.2f}")
 
         xyzradList.append([x1, y1, z1, ring, arc, 0])
         xyzradList.append([x1, y1, z1, ring, arc, distance])
@@ -679,15 +649,6 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
 
     def cleanup(self):
         pass
-
-    # def onSelect(self):
-    # self.applyButton.enabled = self.referenceImage_selectionCombo.currentNode() and self.outputSelector.currentNode()
-
-    # def onApplyButton(self):
-    # logic = stereo_pointsLogic()
-    # enableScreenshotsFlag = self.enableScreenshotsFlagCheckBox.checked
-    # imageThreshold = self.imageThresholdSliderWidget.value
-    # logic.run(self.referenceImage_selectionCombo.currentNode(), self.outputSelector.currentNode(), imageThreshold, enableScreenshotsFlag)
 
 ##
 # stereo_pointsLogic

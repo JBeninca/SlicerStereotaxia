@@ -264,13 +264,6 @@ class find_zFrameWidget(ScriptedLoadableModuleWidget):
     def onSelect(self):
         self.segmentButton.enabled = self.inputSelector.currentNode() and self.outSegmentSelector.currentNode()
     
-    def onMRTypeToggle(self, checked):
-            if checked: self.imgType = 'MR'
-            #print("imgType: %s"%self.imgType)
-    def onctTypeToggle(self, checked):
-            if checked: self.imgType = 'CT'
-            #print("imgType: %s"%self.imgType)
-    
     def onsegmentButton(self):
         self.logic.run_leksellFiducialsSegmentation(self.inputSelector.currentNode(), self.outSegmentSelector.currentNode(), self.imgType, self.outSegmtModelSelector.currentNode())
         slicer.util.setSliceViewerLayers(background=self.inputSelector.currentNode())
@@ -285,7 +278,6 @@ class find_zFrameWidget(ScriptedLoadableModuleWidget):
             self.genModel.enabled = True
         else:
             self.fiducialsPresent_list = [i for i in self.fiducialsPresent_list if i!='A']
-        #print("fiducials present: %s"%str(self.fiducialsPresent_list))
     
     def onPosteriorChanged(self, newState):
         if newState == 2:
@@ -293,31 +285,27 @@ class find_zFrameWidget(ScriptedLoadableModuleWidget):
             self.genModel.enabled = True
         else:
             self.fiducialsPresent_list = [i for i in self.fiducialsPresent_list if i!='P']
-        #print("fiducials present: %s"%str(self.fiducialsPresent_list))
-        
+
     def onLeftChanged(self, newState):
         if newState == 2:
             self.fiducialsPresent_list = list(set(self.fiducialsPresent_list + ['L']))
             self.genModel.enabled = True
         else:
-            self.fiducialsPresent_list = [i for i in self.fiducialsPresent_list if i!='L']
-        #print("fiducials present: %s"%str(self.fiducialsPresent_list))
-        
+            self.fiducialsPresent_list = [i for i in self.fiducialsPresent_list if i!='L']        
+    
     def onRightChanged(self, newState):
         if newState == 2:
             self.fiducialsPresent_list = list(set(self.fiducialsPresent_list + ['R']))
             self.genModel.enabled = True
         else:
-            self.fiducialsPresent_list = [i for i in self.fiducialsPresent_list if i!='R']
-        #print("fiducials present: %s"%str(self.fiducialsPresent_list))
-        
+            self.fiducialsPresent_list = [i for i in self.fiducialsPresent_list if i!='R']        
+    
     def onSuperiorChanged(self, newState):
         if newState == 2:
             self.fiducialsPresent_list = list(set(self.fiducialsPresent_list + ['S']))
             self.genModel.enabled = True
         else:
-            self.fiducialsPresent_list = [i for i in self.fiducialsPresent_list if i!='S']
-        #print("fiducials present: %s"%str(self.fiducialsPresent_list))
+            self.fiducialsPresent_list = [i for i in self.fiducialsPresent_list if i!='S']    
     
     def onGenerateButton(self):
         self.logic.run_generateIdealLeksellFiducials(self.fiducialsPresent_list, self.outIdealModelSelector.currentNode())
