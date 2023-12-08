@@ -279,35 +279,35 @@ class find_zFrameWidget(ScriptedLoadableModuleWidget):
     #########################################################################################################
     
     def onAnteriorChanged(self, newState):
-        if newState == 2:
+        if newState == qt.Qt.Checked:
             self.fiducialsPresent_list = list(set(self.fiducialsPresent_list + ['A']))
             self.genModel.enabled = True
         else:
             self.fiducialsPresent_list = [i for i in self.fiducialsPresent_list if i!='A']
     
     def onPosteriorChanged(self, newState):
-        if newState == 2:
+        if newState == qt.Qt.Checked:
             self.fiducialsPresent_list = list(set(self.fiducialsPresent_list + ['P']))
             self.genModel.enabled = True
         else:
             self.fiducialsPresent_list = [i for i in self.fiducialsPresent_list if i!='P']
 
     def onLeftChanged(self, newState):
-        if newState == 2:
+        if newState == qt.Qt.Checked:
             self.fiducialsPresent_list = list(set(self.fiducialsPresent_list + ['L']))
             self.genModel.enabled = True
         else:
             self.fiducialsPresent_list = [i for i in self.fiducialsPresent_list if i!='L']        
     
     def onRightChanged(self, newState):
-        if newState == 2:
+        if newState == qt.Qt.Checked:
             self.fiducialsPresent_list = list(set(self.fiducialsPresent_list + ['R']))
             self.genModel.enabled = True
         else:
             self.fiducialsPresent_list = [i for i in self.fiducialsPresent_list if i!='R']        
     
     def onSuperiorChanged(self, newState):
-        if newState == 2:
+        if newState == qt.Qt.Checked:
             self.fiducialsPresent_list = list(set(self.fiducialsPresent_list + ['S']))
             self.genModel.enabled = True
         else:
