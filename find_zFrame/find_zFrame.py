@@ -105,8 +105,8 @@ class find_zFrameWidget(ScriptedLoadableModuleWidget):
         #
         self.imgType='CT'
         self.imgTypeHBox = qt.QHBoxLayout()
-        self.ctTypRadio =    qt.QRadioButton("CT")
-        self.MRTypRadio =    qt.QRadioButton("MR (experimental)")
+        self.ctTypRadio =  qt.QRadioButton("CT")
+        self.MRTypRadio =  qt.QRadioButton("MR (experimental)")
         self.ctTypRadio.setChecked(True)
         self.MRTypRadio.setChecked(False)
         self.imgTypeHBox.addWidget(self.MRTypRadio)
@@ -260,7 +260,13 @@ class find_zFrameWidget(ScriptedLoadableModuleWidget):
             self.outSegmentSelector.baseName = "ZFrame_"+newNode.GetName() + '_img'
             self.outSegmtModelSelector.baseName = "ZFrame_"+newNode.GetName() + '_model'
 
-
+    def onMRTypeToggle(self, checked):
+            if checked: self.imgType = 'MR'
+            #print("imgType: %s"%self.imgType)
+    def onctTypeToggle(self, checked):
+            if checked: self.imgType = 'CT'
+            #print("imgType: %s"%self.imgType)
+    
     def onSelect(self):
         self.segmentButton.enabled = self.inputSelector.currentNode() and self.outSegmentSelector.currentNode()
     
