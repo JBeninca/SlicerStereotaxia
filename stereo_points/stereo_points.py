@@ -237,9 +237,6 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         self.updatePointsAfterMove(self.coordTableNode, updatedNode)
 
     def onAddBtnClicked(self):
-        # print('[onAddBtnClicked] x: %f | y: %f | z: %f | r: %f | a: %f'%(
-        # self.xField.value, self.yField.value, self.zField.value,
-        # self.ringField.value, self.arcField.value))
         self.addPointFromStereoSetting(self.coordTableNode,
                                        self.xField.value, self.yField.value, self.zField.value,
                                        self.ringField.value, self.arcField.value, self.depthField.value,
