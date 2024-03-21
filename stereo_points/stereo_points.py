@@ -549,7 +549,7 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
     def GetXYZtoRASTrans(self):
         if slicer.mrmlScene.GetNodesByName('leksell2RAS').GetNumberOfItems() == 0:
             slicer.util.loadTransform(
-                os.path.join(os.path.split(__file__)[0], 'Ressources/Leksell_Frame/leksell2RAS.h5'))
+                os.path.join(os.path.split(__file__)[0], "Resources", "leksell2RAS.h5"))
 
         return self.transformNode_to_numpy4x4(slicer.mrmlScene.GetNodesByName('leksell2RAS').GetItemAsObject(0))
 
@@ -561,7 +561,7 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         import numpy as np
         if slicer.mrmlScene.GetNodesByName('leksell2RAS').GetNumberOfItems() == 0:
             slicer.util.loadTransform(
-                os.path.join(os.path.split(__file__)[0], 'Ressources/Leksell_Frame/leksell2RAS.h5'))
+                os.path.join(os.path.split(__file__)[0], "Resources", "leksell2RAS.h5"))
 
         XYZ2RAStransformation = self.transformNode_to_numpy4x4(
             slicer.mrmlScene.GetNodesByName('leksell2RAS').GetItemAsObject(0))
