@@ -333,9 +333,7 @@ class find_zFrameWidget(ScriptedLoadableModuleWidget):
     def onRegisterPushButtonClicked(self):
         self.logic.run_zFrameRegistration(self.movingZselector.currentNode(),
                                           self.fixedZselector.currentNode(),
-                                          self.outputTransformSelector.currentNode())
-        slicer.util.loadTransform(os.path.join(os.path.split(__file__)[0], 'Resources/Leksell_Frame/leksell2RAS.h5'))
-    
+                                          self.outputTransformSelector.currentNode())    
     #########################################################################################################
 
     def cleanup(self):
