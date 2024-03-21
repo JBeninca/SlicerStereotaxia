@@ -192,33 +192,38 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         self.updatePointsCoordsFromXYZ(self.coordTableNode, self.referenceImage_selectionCombo.currentNode(), newNode)
 
     def onControlPointSelectedChanged(self, newNode):
-        # print('selection changed !')
+        # for each markupLineNode, we maintain a table with the coord conversion.        
+        # table nodes are names with the name of the markupLine with _coordsConversion as prefix
         if (type(newNode) == type(slicer.vtkMRMLMarkupsLineNode())):
             coordTableName = newNode.GetName() + "_coordsConversion"
         else:
             return
-        # print('looking for '+coordTableName)
 
-        if slicer.mrmlScene.GetNodesByName(coordTableName).GetNumberOfItems() == 0:
-            # print('create new table')
+        coordTable_id = newNode.GetNodeReferenceID("stereotaxia_coordTable")
+        # if the lineMarkup does not reference any coordtable yet, create it
+        if  coordTable_id is None:
+            # prepare a new table
             self.coordTableNode = slicer.vtkMRMLTableNode()
             self.coordTableNode.SetName(coordTableName)
             self.coordTableNode.SetLocked(True)
+            # columns:
+            # x, y, z, r, a, d: leksell frame settings + depth
+            # XYZ cartesian coordinates in leksell space
+            # RAS coordinates in physical space (what slicer uses to place the points)
+            # ijk coordinates in image space
             for col in ['Marker', 'x', 'y', 'z', 'r', 'a', 'd', 'X', 'Y', 'Z', 'R', 'A', 'S', 'i', 'j', 'k']:
                 c = self.coordTableNode.AddColumn()
                 c.SetName(col)
-
+                
             slicer.mrmlScene.AddNode(self.coordTableNode)
             # refererence the line from the table so we can get back to it
-            self.coordTableNode.AddNodeReferenceID("vtkMRMLMarkupsLineNode", newNode.GetID())
-            newNode.AddNodeReferenceID("vtkMRMLTableNode", self.coordTableNode.GetID())
+            self.coordTableNode.AddNodeReferenceID("stereotaxia_trajLine", newNode.GetID())
+            newNode.AddNodeReferenceID("stereotaxia_coordTable", self.coordTableNode.GetID())
             # add an observer for both nodes, whenever one is renamed, the other one is renamed as well
             self.coordTableNode.AddObserver(vtk.vtkCommand.ModifiedEvent, self.onCoordTableModified)
-            newNode.AddObserver(vtk.vtkCommand.ModifiedEvent, self.onControlPointNodeModified)
+            newNode.AddObserver(vtk.vtkCommand.ModifiedEvent, self.onControlPointNodeModified)            
         else:
-            # print('found it !')
-            self.coordTableNode = slicer.mrmlScene.GetNodesByName(coordTableName).GetItemAsObject(0)
-
+            self.coordTableNode = slicer.mrmlScene.GetNodeByID(coordTable_id)
         # first populate the table with the markers in the fiducialNode
         # self.fiducial2Table(coordTable, newNode)
         self.pointTableView.setMRMLTableNode(self.coordTableNode)
@@ -228,8 +233,8 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         self.placeWidget.setCurrentNode(self.fiducialGroup_selectionCombo.currentNode())
 
     def onCoordTableModified(self, updatedNode, eventType):
-        fiducialNode = updatedNode.GetNodeReference("vtkMRMLMarkupsLineNode")
-        fiducialNode.SetName(updatedNode.GetName().replace('_coordsConversion', ''))
+        lineNode = updatedNode.GetNodeReference("stereotaxia_trajLine")
+        lineNode.SetName(updatedNode.GetName().replace('_coordsConversion', ''))
 
     def onControlPointNodeModified(self, updatedNode, eventType):
         logging.debug("enter onControlPointNodeModified")
@@ -391,7 +396,9 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
     def updatePointsAfterMove(self, tableNode, fiducialNode):
         XYZList = []
         RASList = []
-
+        if fiducialNode.GetNumberOfControlPoints() == 0:
+            return
+        
         # GET XYZ Positions of all points
         for iControlPoint in range(fiducialNode.GetNumberOfControlPoints()):
             ras = [0, 0, 0]
