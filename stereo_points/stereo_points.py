@@ -582,36 +582,14 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         import sitkUtils as siu
         import numpy as np
         vol = siu.PullVolumeFromSlicer(self.referenceImage_selectionCombo.currentNode().GetName())
-        IJKtoPatRAS = np.zeros([4, 4])
-        IJKtoPatRAS[:3, :3] = np.array(vol.GetDirection()).reshape([3, 3])
-        IJKtoPatRAS[:3, 3] = np.array(vol.GetOrigin())
-        IJKtoPatRAS[3, 3] = 1
-
-        # vtkMat = vtk.vtkMatrix4x4()
-        # self.referenceImage_selectionCombo.currentNode().GetIJKToRASDirectionMatrix(vtkMat)
-        # IJKtoPatRAS = np.array([vtkMat.GetElement(i,j) for i in range(4)for j in range(4)]).reshape([4,4])
-        print("IJK2RAS: %s" % str(IJKtoPatRAS))
-
-        ##################################################################################################################
-        ########## WARNING We add the LPS2RAS matrix in between, this has been determined experimentally with the code:
-
-        ########CT_mrml = slicer.mrmlScene.GetNodesByName('CTpreop_(CT)').GetItemAsObject(0)
-        ########mat=vtk.vtkMatrix4x4()
-        ########CT_mrml.GetIJKToRASDirectionMatrix(mat)
-        ########CT_mrml = np.array([mat.GetElement(i,j) for i in range(4)for j in range(4)]).reshape([4,4])
-
-        ########CT_itk = siu.PullVolumeFromSlicer('CTpreop_(CT)')
-        ########CT_ijk2ras = np.zeros([4,4])
-        ########CT_ijk2ras[:3,:3] = np.array(CT_itk.GetDirection()).reshape([3,3])
-        ########CT_ijk2ras[:3,3] = np.array(CT_itk.GetOrigin())
-        ########CT_ijk2ras[3,3]=1
-
-        #########divide the two matrices and round:
-        ########np.dot(CT_ijk2ras, np.linalg.inv(CT_mrml))
-        ##################################################################################################################
-
+        # we get the transform from itk, so it's IJK2LPS
+        IJKtoPatLPS = np.zeros([4, 4])
+        IJKtoPatLPS[:3, :3] = np.array(vol.GetDirection()).reshape([3, 3])
+        IJKtoPatLPS[:3, 3] = np.array(vol.GetOrigin())
+        IJKtoPatLPS[3, 3] = 1
+        # since slicer uses RAS, we use the LPS2RAS transform.
         LPS2RAS = np.array([-1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]).reshape([4, 4])
-        return np.dot(np.linalg.inv(IJKtoPatRAS), LPS2RAS)
+        return np.dot(np.linalg.inv(IJKtoPatLPS), LPS2RAS)
 
     def RASpatToIJK(self, xyz):
         import numpy as np
