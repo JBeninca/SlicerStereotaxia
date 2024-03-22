@@ -177,6 +177,7 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         self.addBtn.connect('clicked(bool)', self.onAddBtnClicked)
 
         self.coordTableNode = None # current coordinate table node
+        self.lObs_tableNode = None # observer tag of the last selected coordTableNode
 
     ###################################################################################################
     # connections
@@ -198,8 +199,12 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
             coordTableName = newNode.GetName() + "_coordsConversion"
         else:
             return
+        # on first run don't try to remove non-existant observer
+        if self.coordTableNode is not None:
+            self.coordTableNode.RemoveObserver(self.lObs_tableNode)
 
         coordTable_id = newNode.GetNodeReferenceID("stereotaxia_coordTable")
+        
         # if the lineMarkup does not reference any coordtable yet, create it
         if  coordTable_id is None:
             # prepare a new table
@@ -220,7 +225,7 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
             self.coordTableNode.AddNodeReferenceID("stereotaxia_trajLine", newNode.GetID())
             newNode.AddNodeReferenceID("stereotaxia_coordTable", self.coordTableNode.GetID())
             # add an observer for both nodes, whenever one is renamed, the other one is renamed as well
-            self.coordTableNode.AddObserver(vtk.vtkCommand.ModifiedEvent, self.onCoordTableModified)
+            self.lObs_tableNode = self.coordTableNode.AddObserver(vtk.vtkCommand.ModifiedEvent, self.onCoordTableModified)
             newNode.AddObserver(vtk.vtkCommand.ModifiedEvent, self.onControlPointNodeModified)            
         else:
             self.coordTableNode = slicer.mrmlScene.GetNodeByID(coordTable_id)
