@@ -185,6 +185,8 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
     #########################################################################################################
     def onReferenceImageSelectedChanged(self, newNode):
         # we only update the table if one is selected.
+        if newNode is None:
+            return
         if self.coordTableNode:
             self.updatePointsCoordsFromXYZ(self.coordTableNode, newNode, self.frameTransform_selectionCombo.currentNode())
             self.disorient_btn.setText('Disorient "' + newNode.GetName() + '"')
