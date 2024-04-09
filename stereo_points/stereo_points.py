@@ -90,9 +90,6 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         self.colorButton = slicer.util.findChild(self.placeWidget, 'ColorButton')
         self.colorButton.show()
 
-        # self.lockButton = self.placeWidget.children()[5]
-        # self.lockButton.visible = True
-
         self.lockNumberButton = self.placeWidget.children()[6]
         self.lockNumberButton.visible = False
 
@@ -163,7 +160,10 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
 
         self.disorient_btn = qt.QPushButton('Disorient ref image')
         self.disorient_btn.setToolTip(
-            "In order to use the ijk coordinates, the IJK2RAS transform will be removed from the reference image selected and a new volume will be created. This volume will be of no use in Slicer, but can be loaded in not medical imaging softwares (paraview, matlab...). This will also copy the coordsConversion table to a new name in case you want to save it.")
+            '''In order to use the ijk coordinates, the IJK2RAS transform will be removed from the reference
+            image selected and a new volume will be created. This volume will be of no use in Slicer, but can 
+            be loaded in not medical imaging softwares (paraview, matlab...). This will also copy the 
+            coordsConversion table to a new name in case you want to save it.''')
         self.stereoPointsVBoxLayout.addWidget(self.disorient_btn)
 
         self.referenceImage_selectionCombo.connect('currentNodeChanged(vtkMRMLNode*)',
@@ -192,7 +192,8 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
             self.disorient_btn.setText('Disorient "' + newNode.GetName() + '"')
 
     def onFrameTransformSelectedChanged(self, newNode):
-        self.updatePointsCoordsFromXYZ(self.coordTableNode, self.referenceImage_selectionCombo.currentNode(), newNode)
+        if newNode is not None: # to not run the updatepoints when nothing is selected 
+            self.updatePointsCoordsFromXYZ(self.coordTableNode, self.referenceImage_selectionCombo.currentNode(), newNode)
 
     def onControlPointSelectedChanged(self, newNode):
         # for each markupLineNode, we maintain a table with the coord conversion.        
@@ -329,7 +330,7 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         refImg_itk.SetOrigin([0, 0, 0])
         siu.PushVolumeToSlicer(refImg_itk,
                                name=self.referenceImage_selectionCombo.currentNode().GetName() + '_noOrient')
-        coordTable = slicer.mrmlScene.GetNodeByID(self.fiducialGroup_selectionCombo.currentNode().GetNodeReferenceID("vtkMRMLTableNode"))
+        coordTable = slicer.mrmlScene.GetNodeByID(self.fiducialGroup_selectionCombo.currentNode().GetNodeReferenceID("stereotaxia_coordTable"))
 
         # clone the table node
         newTable = slicer.vtkMRMLTableNode()
