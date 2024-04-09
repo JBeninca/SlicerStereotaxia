@@ -176,24 +176,22 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
 
         self.addBtn.connect('clicked(bool)', self.onAddBtnClicked)
 
-        self.coordTableNode = None # current coordinate table node
         self.lObs_tableNode = None # observer tag of the last selected coordTableNode
 
-    ###################################################################################################
+    #########################################################################################################
     # connections
-
     #########################################################################################################
     def onReferenceImageSelectedChanged(self, newNode):
         # we only update the table if one is selected.
         if newNode is None:
             return
-        if self.coordTableNode:
-            self.updatePointsCoordsFromXYZ(self.coordTableNode, newNode, self.frameTransform_selectionCombo.currentNode())
+        if self.GetCoordTable():
+            self.updatePointsCoordsFromXYZ(self.GetCoordTable(), newNode, self.frameTransform_selectionCombo.currentNode())
             self.disorient_btn.setText('Disorient "' + newNode.GetName() + '"')
 
     def onFrameTransformSelectedChanged(self, newNode):
         if newNode is not None: # to not run the updatepoints when nothing is selected 
-            self.updatePointsCoordsFromXYZ(self.coordTableNode, self.referenceImage_selectionCombo.currentNode(), newNode)
+            self.updatePointsCoordsFromXYZ(self.GetCoordTable(), self.referenceImage_selectionCombo.currentNode(), newNode)
 
     def onControlPointSelectedChanged(self, newNode):
         # for each markupLineNode, we maintain a table with the coord conversion.        
@@ -203,38 +201,37 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         else:
             return
         # on first run don't try to remove non-existant observer
-        if self.coordTableNode is not None:
-            self.coordTableNode.RemoveObserver(self.lObs_tableNode)
+        if self.GetCoordTable() is not None:
+            self.GetCoordTable().RemoveObserver(self.lObs_tableNode)
 
         coordTable_id = newNode.GetNodeReferenceID("stereotaxia_coordTable")
         
         # if the lineMarkup does not reference any coordtable yet, create it
         if  coordTable_id is None:
             # prepare a new table
-            self.coordTableNode = slicer.vtkMRMLTableNode()
-            self.coordTableNode.SetName(coordTableName)
-            self.coordTableNode.SetLocked(True)
+            newCoordTable = slicer.vtkMRMLTableNode()
+            newCoordTable.SetName(coordTableName)
+            newCoordTable.SetLocked(True)
             # columns:
             # x, y, z, r, a, d: leksell frame settings + depth
             # XYZ cartesian coordinates in leksell space
             # RAS coordinates in physical space (what slicer uses to place the points)
             # ijk coordinates in image space
             for col in ['Marker', 'x', 'y', 'z', 'r', 'a', 'd', 'X', 'Y', 'Z', 'R', 'A', 'S', 'i', 'j', 'k']:
-                c = self.coordTableNode.AddColumn()
+                c = newCoordTable.AddColumn()
                 c.SetName(col)
                 
-            slicer.mrmlScene.AddNode(self.coordTableNode)
+            slicer.mrmlScene.AddNode(newCoordTable))
             # refererence the line from the table so we can get back to it
-            self.coordTableNode.AddNodeReferenceID("stereotaxia_trajLine", newNode.GetID())
-            newNode.AddNodeReferenceID("stereotaxia_coordTable", self.coordTableNode.GetID())
+            newCoordTable.AddNodeReferenceID("stereotaxia_trajLine", newNode.GetID())
+            newNode.AddNodeReferenceID("stereotaxia_coordTable", newCoordTable.GetID())
             # add an observer for both nodes, whenever one is renamed, the other one is renamed as well
-            self.lObs_tableNode = self.coordTableNode.AddObserver(vtk.vtkCommand.ModifiedEvent, self.onCoordTableModified)
-            newNode.AddObserver(vtk.vtkCommand.ModifiedEvent, self.onControlPointNodeModified)            
-        else:
-            self.coordTableNode = slicer.mrmlScene.GetNodeByID(coordTable_id)
+            self.lObs_tableNode = newCoordTable.AddObserver(vtk.vtkCommand.ModifiedEvent, self.onCoordTableModified)
+            newNode.AddObserver(vtk.vtkCommand.ModifiedEvent, self.onControlPointNodeModified)
+            self.fiducialGroup_selectionCombo.setCurrentNode(newNode)
         # first populate the table with the markers in the fiducialNode
         # self.fiducial2Table(coordTable, newNode)
-        self.pointTableView.setMRMLTableNode(self.coordTableNode)
+        self.pointTableView.setMRMLTableNode(self.GetCoordTable())
         self.pointTableView.setFirstRowLocked(True)
         self.pointTableView.show()
 
@@ -246,21 +243,28 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
 
     def onControlPointNodeModified(self, updatedNode, eventType):
         logging.debug("enter onControlPointNodeModified")
-        self.coordTableNode.SetName(updatedNode.GetName() + '_coordsConversion')
-        self.updatePointsAfterMove(self.coordTableNode, updatedNode)
+        self.GetCoordTable().SetName(updatedNode.GetName() + '_coordsConversion')
+        self.updatePointsAfterMove(self.GetCoordTable(), updatedNode)
 
     def onAddBtnClicked(self):
-        self.addPointFromStereoSetting(self.coordTableNode,
+        self.addPointFromStereoSetting(self.GetCoordTable(),
                                        self.xField.value, self.yField.value, self.zField.value,
                                        self.ringField.value, self.arcField.value, self.depthField.value,
                                        self.fiducialGroup_selectionCombo.currentNode().GetName() + 
                                        "_" + 
                                        self.nameField.text
                                        )
-        self.table2ControlPoint(self.coordTableNode, self.fiducialGroup_selectionCombo.currentNode())
+        self.table2ControlPoint(self.GetCoordTable(), self.fiducialGroup_selectionCombo.currentNode())
 
         self.nameField.setText('')
         print('==============================================================')
+
+    #########################################################################################################
+    # end connections
+    #########################################################################################################
+
+    def GetCoordTable():
+        return self.fiducialGroup_selectionCombo.currentNode()
 
     def GetXYZcoordFromStereoSetings(self, x, y, z, r, a, d):
         import numpy as np
