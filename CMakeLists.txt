@@ -6,7 +6,7 @@ project(Stereotaxia)
 # Extension meta-information
 set(EXTENSION_HOMEPAGE "https://github.com/JBeninca/SlicerStereotaxia#stereotaxia")
 set(EXTENSION_CATEGORY "IGT")
-set(EXTENSION_CONTRIBUTORS "Dr. Miguel Ibanez, Dr. Dante Lovey, Dr. Lucas Vera, Dr. Elena Zema, Dr. Jorge Beninca, Marc Jermann (FHNW (CH)), Dr. Dorian Vogel (FHNW (CH), LiU (SE))")
+set(EXTENSION_CONTRIBUTORS "Dr. Miguel Ibanez, Dr. Dante Lovey, Dr. Lucas Vera, Dr. Elena Zema, Dr. Jorge Beninca, Marc Jermann (Institute for Medical Engineering and Medical Informatics, FHNW, Muttenz, Switzerland), Dorian Vogel (Institute for Medical Engineering and Medical Informatics, FHNW, Muttenz, Switzerland)")
 set(EXTENSION_DESCRIPTION "Compute stereotactic frame coordinates for neurosurgery planning.")
 set(EXTENSION_ICONURL "https://github.com/JBeninca/SlicerStereotaxia/raw/main/Stereotaxia.png")
 set(EXTENSION_SCREENSHOTURLS "https://github.com/JBeninca/SlicerStereotaxia/raw/main/Screenshot.jpg https://github.com/JBeninca/SlicerStereotaxia/raw/main/resources/Images/Screenshot_02_StereotacticTrajectories.png")
