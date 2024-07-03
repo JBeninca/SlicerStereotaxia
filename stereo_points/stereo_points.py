@@ -232,12 +232,18 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
 
     def onCoordTableModified(self, updatedNode, eventType):
         lineNode = updatedNode.GetNodeReference("stereotaxia_trajLine")
+        logging.debug(
+            f"{updatedNode.GetName()} was modified. The associated line: {lineNode.GetName()} will be updated."
+        )
         lineNode.SetName(updatedNode.GetName().replace("_coordsConversion", ""))
 
     def onControlPointNodeModified(self, updatedNode, eventType):
-        logging.debug("enter onControlPointNodeModified")
-        self.GetCoordTable().SetName(updatedNode.GetName() + "_coordsConversion")
-        self.updatePointsAfterMove(self.GetCoordTable(), updatedNode)
+        coordTable = updatedNode.GetNodeReference("stereotaxia_coordTable")
+        logging.debug(
+            f"{updatedNode.GetName()} was modified. The associated table: {coordTable.GetName()} will be updated."
+        )
+        coordTable.SetName(updatedNode.GetName() + "_coordsConversion")
+        self.updatePointsAfterMove(coordTable, updatedNode)
 
     def onAddBtnClicked(self):
         self.addPointFromStereoSetting(
