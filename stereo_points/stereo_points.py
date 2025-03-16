@@ -364,7 +364,7 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
         
     def addPointFromStereoSetting(self, tableNode, x, y, z, r, a, d, label):
         row = tableNode.AddEmptyRow()
-        X, Y, Z, _ = self.logic.GetXYZcoordFromStereoSetings(x, y, z, r, a, d, paralellTraj=self.paralellTraj.currentText)
+        X, Y, Z, _ = self.logic.GetXYZcoordFromStereoSettings(x, y, z, r, a, d, paralellTraj=self.paralellTraj.currentText)
 
         trajTransform = slicer.vtkMRMLTransformNode()
         trajTransform.SetName(label)
