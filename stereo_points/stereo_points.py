@@ -443,7 +443,7 @@ class stereo_pointsLogic(ScriptedLoadableModuleLogic):
             ]
         )
 
-        carthesianTrans = np.array(
+        cartesianTrans = np.array(
             [[1, 0, 0, x], [0, 1, 0, y], [0, 0, 1, z], [0, 0, 0, 1]]
         )
 
@@ -458,7 +458,7 @@ class stereo_pointsLogic(ScriptedLoadableModuleLogic):
         # left lateral, right medial:   [0,2,0]
         # left medial, right lateral:   [0,-2,0]
         # for inserting paralell trajectories, the upper transform needs to be added at the end of trajTransform
-        # ex for posterior: trajTrans = carthesianTrans @ ringTrans @ arcTrans @ [[1,0,0,0], [0,1,0,0], [0,0,1,-2], [0,0,0,1]]
+        # ex for posterior: trajTrans = cartesianTrans @ ringTrans @ arcTrans @ [[1,0,0,0], [0,1,0,0], [0,0,1,-2], [0,0,0,1]]
 
         trajModifier = {
             "Central": [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]],
@@ -468,7 +468,7 @@ class stereo_pointsLogic(ScriptedLoadableModuleLogic):
             "Right": [[1, 0, 0, 0], [0, 1, 0, -2], [0, 0, 1, 0], [0, 0, 0, 1]],
         }[paralellTraj]
 
-        trajTrans = carthesianTrans @ ringTrans @ arcTrans @ trajModifier
+        trajTrans = cartesianTrans @ ringTrans @ arcTrans @ trajModifier
         logging.debug("=============== trajectory transform ===============")
 
         logging.debug(trajTrans)
