@@ -24,11 +24,15 @@ class stereo_points(ScriptedLoadableModule):
             "Dorian Vogel (FHNW, LiU), Marc Jermann (FHNW)"
         ]  # replace with "Firstname Lastname (Organization)"
         self.parent.helpText = """
-This module allows entering target points in stereotactic coordinates and have them transformed in RAS space. This requires the use of the "Leksell Frame localization" first. Points are also transformed in the reference image ijk space and the image without ijk2ras transform can also be created.
+This module allows entering target points in stereotactic coordinates and have them transformed in RAS space. 
+This requires the use of the "Leksell Frame localization" first. Points are also transformed in the reference 
+image ijk space and the image without ijk2ras transform can also be created.
 """
         # self.parent.helpText += self.getDefaultModuleDocumentationLink()
         self.parent.acknowledgementText = """
-This file was originally developed by Dorian Vogel, (Fachhochschule Nordwestschweitz, Muttenz, Switzerland; Linköping University, Linköping, Sweden). Financial support: FHNW, SSF, VR.
+This file was originally developed by Dorian Vogel, (Fachhochschule Nordwestschweitz, Muttenz, Switzerland; 
+Linköping University, Linköping, Sweden). 
+Financial support: FHNW, SSF, VR.
 """
 
 
