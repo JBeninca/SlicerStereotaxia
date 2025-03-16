@@ -288,8 +288,6 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
                 ]
             )
             self.fiducialGroup_selectionCombo.setCurrentNode(newNode)
-        # first populate the table with the markers in the fiducialNode
-        # self.fiducial2Table(coordTable, newNode)
         self.pointTableView.setMRMLTableNode(self.GetCoordTable())
         self.pointTableView.setFirstRowLocked(True)
         self.pointTableView.show()
@@ -305,11 +303,13 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
 
     def onControlPointNodeModified(self, updatedNode, eventType):
         coordTable = updatedNode.GetNodeReference("stereotaxia_coordTable")
-        # logging.debug(
-        #     f"{updatedNode.GetName()} was modified. The associated table: {coordTable.GetName()} will be updated."
-        # )
         coordTable.SetName(updatedNode.GetName() + "_coordsConversion")
-        self.logic.updatePointsAfterMove(coordTable, updatedNode, self.referenceImage_selectionCombo.currentNode(), self.frameTransform_selectionCombo.currentNode())
+        self.logic.updatePointsAfterMove(
+            coordTable,
+            updatedNode,
+            self.referenceImage_selectionCombo.currentNode(),
+            self.frameTransform_selectionCombo.currentNode(),
+        )
 
     def onAddBtnClicked(self):
         self.addPointFromStereoSetting(
@@ -322,7 +322,7 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
             self.depthField.value,
             self.fiducialGroup_selectionCombo.currentNode().GetName()
             + "_"
-            + self.nameField.text
+            + self.nameField.text,
         )
         self.logic.table2ControlPoint(
             self.GetCoordTable(), self.fiducialGroup_selectionCombo.currentNode()
@@ -361,15 +361,21 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
             return slicer.mrmlScene.GetNodeByID(coordTableID)
         else:
             return None
-        
+
     def addPointFromStereoSetting(self, tableNode, x, y, z, r, a, d, label):
         row = tableNode.AddEmptyRow()
-        X, Y, Z, _ = self.logic.GetXYZcoordFromStereoSettings(x, y, z, r, a, d, paralellTraj=self.paralellTraj.currentText)
+        X, Y, Z, _ = self.logic.GetXYZcoordFromStereoSettings(
+            x, y, z, r, a, d, paralellTraj=self.paralellTraj.currentText
+        )
 
         trajTransform = slicer.vtkMRMLTransformNode()
         trajTransform.SetName(label)
         trajTransform.SetMatrixTransformToParent(
-            slicer.util.vtkMatrixFromArray(self.logic.GetTrajectoryTransform(x, y, z, r, a, paralellTraj=self.paralellTraj.currentText))
+            slicer.util.vtkMatrixFromArray(
+                self.logic.GetTrajectoryTransform(
+                    x, y, z, r, a, paralellTraj=self.paralellTraj.currentText
+                )
+            )
         )
         slicer.mrmlScene.AddNode(trajTransform)
 
@@ -390,9 +396,6 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
             self.referenceImage_selectionCombo.currentNode(),
             self.frameTransform_selectionCombo.currentNode(),
         )
-  
-    # Refresh Apply button state
-    # self.onSelect()
 
     ###################################################################################################
     # connection handler methods
@@ -412,7 +415,9 @@ class stereo_pointsLogic(ScriptedLoadableModuleLogic):
     def GetXYZcoordFromStereoSetings(self, x, y, z, r, a, d, paralellTraj="Central"):
         import numpy as np
 
-        coord = self.GetTrajectoryTransform(x, y, z, r, a, paralellTraj=paralellTraj) @ np.array([d, 0, 0, 1])
+        coord = self.GetTrajectoryTransform(
+            x, y, z, r, a, paralellTraj=paralellTraj
+        ) @ np.array([d, 0, 0, 1])
         return coord.tolist()
 
     def GetTrajectoryTransform(self, x, y, z, r, a, paralellTraj="Central"):
@@ -479,7 +484,9 @@ class stereo_pointsLogic(ScriptedLoadableModuleLogic):
             ]
 
             [R, A, S] = self.XYZtoRAS(xyz)
-            [i, j, k] = self.RASpatToIJK(self.RAStoRASpat(self.XYZtoRAS(xyz), frameTransform), refImage)
+            [i, j, k] = self.RASpatToIJK(
+                self.RAStoRASpat(self.XYZtoRAS(xyz), frameTransform), refImage
+            )
 
             tableNode.SetCellText(iRow, tableNode.GetColumnIndex("R"), "%.02f" % R)
             tableNode.SetCellText(iRow, tableNode.GetColumnIndex("A"), "%.02f" % A)
@@ -527,7 +534,9 @@ class stereo_pointsLogic(ScriptedLoadableModuleLogic):
                 [x, y, z, r, a, d] = xyzradList[irow]
                 [X, Y, Z] = XYZList[irow]
                 [R, A, S] = RASList[irow]
-                [i, j, k] = self.RASpatToIJK(self.RAStoRASpat([R, A, S], frameTransform), ref_img)
+                [i, j, k] = self.RASpatToIJK(
+                    self.RAStoRASpat([R, A, S], frameTransform), ref_img
+                )
 
                 # Refill Table
                 row = tableNode.AddEmptyRow()
@@ -568,7 +577,9 @@ class stereo_pointsLogic(ScriptedLoadableModuleLogic):
                 label = labels[irow]
                 [X, Y, Z] = XYZList[irow]
                 [R, A, S] = RASList[irow]
-                [i, j, k] = self.RASpatToIJK(self.RAStoRASpat([R, A, S], frameTransform), ref_img)
+                [i, j, k] = self.RASpatToIJK(
+                    self.RAStoRASpat([R, A, S], frameTransform), ref_img
+                )
 
                 # Refill Table
                 row = tableNode.AddEmptyRow()
@@ -708,14 +719,14 @@ class stereo_pointsLogic(ScriptedLoadableModuleLogic):
     def GetRAStoRASpatTrans(self, currentFrameTransform):
         import numpy as np
 
-        return self.transformNode_to_numpy4x4(
-            currentFrameTransform
-        )
+        return self.transformNode_to_numpy4x4(currentFrameTransform)
 
     def RAStoRASpat(self, xyz, frametransform):
         import numpy as np
 
-        res = np.dot(self.GetRAStoRASpatTrans(frametransform), np.array(xyz + [1])).tolist()[:3]
+        res = np.dot(
+            self.GetRAStoRASpatTrans(frametransform), np.array(xyz + [1])
+        ).tolist()[:3]
         return res
 
     def GetRASpatToIJKtrans(self, ref_img):
@@ -748,8 +759,9 @@ class stereo_pointsLogic(ScriptedLoadableModuleLogic):
     def RASpatToIJK(self, xyz, ref_img):
         import numpy as np
 
-        # return np.dot(np.linalg.inv(IJKtoPatRAS), np.dot( np.linalg.inv(LPS2RAS), np.array(xyz+[1]))).tolist()[:3]
-        return np.dot(self.GetRASpatToIJKtrans(ref_img), np.array(xyz + [1])).tolist()[:3]
+        return np.dot(self.GetRASpatToIJKtrans(ref_img), np.array(xyz + [1])).tolist()[
+            :3
+        ]
 
     def GetLeksell2IJKtrans(self, x, y, z, r, a, ref_img):
         import numpy as np
@@ -781,7 +793,6 @@ class stereo_pointsLogic(ScriptedLoadableModuleLogic):
         return np.array(
             [vtkMat.GetElement(i, j) for i in range(4) for j in range(4)]
         ).reshape([4, 4])
-
 
 
 class stereo_pointsTest(ScriptedLoadableModuleTest):
