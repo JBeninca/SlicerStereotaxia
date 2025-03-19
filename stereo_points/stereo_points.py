@@ -416,7 +416,7 @@ class stereo_pointsWidget(ScriptedLoadableModuleWidget):
 
 
 class stereo_pointsLogic(ScriptedLoadableModuleLogic):
-    def GetXYZcoordFromStereoSetings(self, x, y, z, r, a, d, paralellTraj="Central"):
+    def GetXYZcoordFromStereoSettings(self, x, y, z, r, a, d, paralellTraj="Central"):
         import numpy as np
 
         coord = self.GetTrajectoryTransform(
@@ -736,11 +736,7 @@ class stereo_pointsLogic(ScriptedLoadableModuleLogic):
     def GetRASpatToIJKtrans(self, ref_img):
         import numpy as np
 
-        parentTransformNode = ref_img.GetParentTransformNode()
-        if type(parentTransformNode) not in [
-            type(None),
-            slicer.vtkMRMLLinearTransformNode,
-        ]:
+        if not ref_img.GetParentTransformNode().IsLinear():
             raise ValueError("The reference image can only be linearly transformed")
 
         rasToVolumeRas = vtk.vtkMatrix4x4()
